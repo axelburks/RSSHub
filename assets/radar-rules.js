@@ -1748,4 +1748,135 @@
             },
         ],
     },
+    'qq.com': {
+        _name: '微信',
+        'mp.weixin': [
+            {
+                title: '公众号栏目',
+                docs: 'https://docs.rsshub.app/new-media.html#gong-zhong-hao-lan-mu-fei-tui-song-li-shi-xiao-xi',
+                source: '/mp/homepage',
+                target: (params, url) => `/wechat/mp/homepage/${new URL(url).searchParams.get('__biz')}/${new URL(url).searchParams.get('hid')}/${new URL(url).searchParams.get('cid') ? new URL(url).searchParams.get('cid') : ''}`,
+            },
+        ],
+    },
+    'javbus.com': {
+        _name: 'JavBus',
+        www: [
+            {
+                title: '首页',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/',
+                target: '/javbus/home',
+            },
+            {
+                title: '分类',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/genre/:gid',
+                target: '/javbus/genre/:gid',
+            },
+            {
+                title: '演员',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/star/:sid',
+                target: '/javbus/star/:sid',
+            },
+            {
+                title: '系列',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/series/:seriesid',
+                target: '/javbus/series/:seriesid',
+            },
+            {
+                title: '首页 / 步兵',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/uncensored',
+                target: '/javbus/uncensored/home',
+            },
+            {
+                title: '分类 / 步兵',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/uncensored/genre/:gid',
+                target: '/javbus/uncensored/genre/:gid',
+            },
+            {
+                title: '演员 / 步兵',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/uncensored/star/:sid',
+                target: '/javbus/uncensored/star/:sid',
+            },
+            {
+                title: '系列 / 步兵',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/uncensored/series/:seriesid',
+                target: '/javbus/uncensored/series/:seriesid',
+            },
+        ],
+    },
+    'javbus.one': {
+        _name: 'JavBus',
+        www: [
+            {
+                title: '首页 / 欧陆风云',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/',
+                target: '/javbus/western/home',
+            },
+            {
+                title: '分类 / 欧陆风云',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/genre/:gid',
+                target: '/javbus/western/genre/:gid',
+            },
+            {
+                title: '演员 / 欧陆风云',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/star/:sid',
+                target: '/javbus/western/star/:sid',
+            },
+            {
+                title: '系列 / 欧陆风云',
+                docs: 'https://docs.rsshub.app/multimedia.html#javbus',
+                source: '/series/:seriesid',
+                target: '/javbus/western/series/:seriesid',
+            },
+        ],
+    },
+    'sexinsex.net': {
+        _name: 'sexinsex',
+        '.': [
+            {
+                title: '分区帖子',
+                docs: 'https://docs.rsshub.app/multimedia.html#sexinsex',
+                source: '/bbs/:path',
+                target: (params, url) => {
+                    let pid, typeid;
+                    const static_matched = params.path.match(/forum-(\d+)-\d+.html/);
+                    if (static_matched) {
+                        pid = static_matched[1];
+                    } else if (params.path === 'forumdisplay.php') {
+                        pid = new URL(url).searchParams.get('fid');
+                        typeid = new URL(url).searchParams.get('typeid');
+                    } else {
+                        return false;
+                    }
+                    return `/sexinsex/${pid}/${typeid ? typeid : ''}`;
+                },
+            },
+        ],
+    },
+    't66y.com': {
+        _name: '草榴社区',
+        www: [
+            {
+                title: '分区帖子',
+                docs: 'https://docs.rsshub.app/multimedia.html#cao-liu-she-qu',
+                source: '/thread0806.php',
+                target: (params, url) => {
+                    const id = new URL(url).searchParams.get('fid');
+                    const type = new URL(url).searchParams.get('type');
+                    return `/t66y/${id}/${type ? type : ''}`;
+                },
+            },
+        ],
+    },
 });
