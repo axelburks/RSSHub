@@ -1,6 +1,6 @@
----
-pageClass: routes
----
+***
+
+## pageClass: routes
 
 # 政务消息
 
@@ -28,7 +28,13 @@ pageClass: routes
 
 </Route>
 
-## 国家新闻出版广电总局
+## 国家税务总局
+
+### 最新文件
+
+<Route author="nczitzk" example="/gov/chinatax/latest" path="/gov/chinatax/latest"/>
+
+## 国家新闻出版广电总局（弃用）
 
 ### 游戏审批结果
 
@@ -49,11 +55,45 @@ pageClass: routes
 
 </Route>
 
+## 国家新闻出版署
+
+### 列表
+
+<Route author="y2361547758" example="/gov/nppa/317" path="/gov/nppa/:channel" :paramsDesc="['栏目名id']" radar="1" rssbud="1"/>
+
+### 详情
+
+<Route author="y2361547758" example="/gov/nppa/318/45948" path="/gov/nppa/:channel/:content" :paramsDesc="['栏目名id', '文章id']" radar="1" rssbud="1"/>
+
 ## 联合国
 
 ### 安理会否决了决议
 
 <Route author="HenryQW" example="/un/scveto" path="/un/scveto"/>
+
+## 泉州市跨境电子商务协会
+
+### 新闻动态
+
+<Route author="nczitzk" example="/qzcea" path="/qzcea/:caty?" :paramsDesc="['分类 id，默认为 1']">
+
+| 新闻动态 | 协会动态 | 通知公告 | 会员风采 | 政策法规 | 电商资讯 |
+| -------- | -------- | -------- | -------- | -------- | -------- |
+| 1        | 2        | 3        | 5        | 14       | 18       |
+
+</Route>
+
+## 日本国外務省
+
+### 記者会見
+
+<Route author="sgqy" example="/go.jp/mofa" path="/go.jp/mofa"/>
+
+## 世界贸易组织
+
+### 争端解决新闻
+
+<Route author="nczitzk" example="/wto/dispute-settlement" path="/wto/dispute-settlement/:year?" :paramsDesc="['年份，默认为当前年份']"/>
 
 ## 苏州市人民政府
 
@@ -99,7 +139,61 @@ pageClass: routes
 
 <Route author="Yoge-Code" example="/gov/cnca/zxtz" path="/gov/cnca/zxtz"/>
 
+## 中国人大网
+
+<Route author="233yeee" example="/npc/c183" path="/npc/:caty" :paramsDesc="['分类名，支持形如`http://www.npc.gov.cn/npc/*/list.shtml`的网站，传入 npc 之后的参数']">
+
+| 立法 | 监督 | 代表 | 理论 | 权威发布 | 滚动新闻 |
+| ---- | ---- | ---- | ---- | -------- | -------- |
+| c183 | c184 | c185 | c189 | c12435   | c10134   |
+
+</Route>
+
+## 中国信息通信研究院
+
+### 白皮书
+
+<Route author="nczitzk" example="/gov/caict/bps" path="/gov/caict/bps"/>
+
+### 权威数据
+
+<Route author="nczitzk" example="/gov/caict/qwsj" path="/gov/caict/qwsj"/>
+
+### CAICT 观点
+
+<Route author="nczitzk" example="/gov/caict/caictgd" path="/gov/caict/caictgd"/>
+
 ## 中国政府
+
+### 数据
+
+<Route author="nczitzk" example="/gov/shuju/shengzhu/baitiaorou" path="/gov/shuju/:caty/:item" :paramsDesc="['分类，“生猪”对应`shengzhu`，“价格”对应`jiage`', '项目，见表']">
+
+生猪分类可选项目：
+
+| 白条猪价格 | 生猪屠宰与活体交易 | 仔猪价格 | 生猪出场价与玉米价  | 生猪存栏信息和生猪疫情 |
+| ---------- | ------------------ | -------- | ------------------- | ---------------------- |
+| baitiaorou | huotijiaoyi        | zizhu    | chuchangjia_yumijia | cunlan_yiqing          |
+
+价格分类可选项目：
+
+| 商品价格 | 农产品价格  | 油价   |
+| -------- | ----------- | ------ |
+| shangpin | nongchanpin | youjia |
+
+</Route>
+
+### 图解
+
+<Route author="nczitzk" example="/gov/xinwen/tujie/zhengce" path="/gov/xinwen/tujie/:caty" :paramsDesc="['图解分类，见下表']">
+
+| 总理活动图解 | 每周一画 | 其他漫画 | 图解政策 | 其他图解 |
+| ------------ | -------- | -------- | -------- | -------- |
+| zlhd         | mzyh     | qtmh     | zhengce  | qttj     |
+
+全部分类参见 [图解图表](http://www.gov.cn/xinwen/tujie/index.htm)
+
+</Route>
 
 ### 最新政策
 
@@ -247,21 +341,21 @@ pageClass: routes
 
 #### 德国 `DE`
 
--   大使馆: `/embassy/de`
+*   大使馆: `/embassy/de`
 
--   领事馆城市列表:
+*   领事馆城市列表:
 
 | 城市   | 路由                 |
 | ------ | -------------------- |
 | 慕尼黑 | `/embassy/de/munich` |
 
-* * *
+***
 
 #### 法国 `FR`
 
--   大使馆: `/embassy/fr`
+*   大使馆: `/embassy/fr`
 
--   领事馆城市列表:
+*   领事馆城市列表:
 
 | 城市       | 路由                     |
 | ---------- | ------------------------ |
@@ -269,13 +363,13 @@ pageClass: routes
 | 斯特拉斯堡 | `/embassy/fr/strasbourg` |
 | 里昂       | `/embassy/fr/lyon`       |
 
-* * *
+***
 
 #### 日本 `JP`
 
--   大使馆: `/embassy/jp`
+*   大使馆: `/embassy/jp`
 
--   领事馆城市列表:
+*   领事馆城市列表:
 
 | 城市   | 路由                   |
 | ------ | ---------------------- |
@@ -286,13 +380,13 @@ pageClass: routes
 | 札幌   | `/embassy/jp/sapporo`  |
 | 新潟   | `/embassy/jp/niigata`  |
 
-* * *
+***
 
 #### 韩国 `KR`
 
--   大使馆: `/embassy/kr`
+*   大使馆: `/embassy/kr`
 
--   领事馆城市列表:
+*   领事馆城市列表:
 
 | 城市 | 路由                  |
 | ---- | --------------------- |
@@ -300,19 +394,25 @@ pageClass: routes
 | 济州 | `/embassy/kr/jeju`    |
 | 光州 | `/embassy/kr/gwangju` |
 
-* * *
+***
+
+#### 马来西亚 `MY`
+
+*   大使馆: `/embassy/my`
+
+***
 
 #### 新加坡 `SG`
 
--   大使馆: `/embassy/sg`
+*   大使馆: `/embassy/sg`
 
-* * *
+***
 
 #### 美国 `US`
 
--   大使馆: `/embassy/us`
+*   大使馆: `/embassy/us`
 
--   领事馆城市列表:
+*   领事馆城市列表:
 
 | 城市   | 路由                       |
 | ------ | -------------------------- |
@@ -320,19 +420,25 @@ pageClass: routes
 | 芝加哥 | `/embassy/us/chicago`      |
 | 旧金山 | `/embassy/us/sanfrancisco` |
 
-* * *
+***
 
 #### 英国 `UK`
 
--   大使馆: `/embassy/uk`
+*   大使馆: `/embassy/uk`
 
--   领事馆城市列表:
+*   领事馆城市列表:
 
 | 城市       | 路由                     |
 | ---------- | ------------------------ |
 | 爱丁堡     | `/embassy/uk/edinburgh`  |
 | 贝尔法斯特 | `/embassy/uk/belfast`    |
 | 曼彻斯特   | `/embassy/uk/manchester` |
+
+## 中華民國國防部
+
+### 即時軍事動態
+
+<Route author="nczitzk" example="/gov/taiwan/mnd" path="/gov/taiwan/mnd"/>
 
 ## 中华人民共和国海关总署
 
@@ -360,12 +466,16 @@ pageClass: routes
 
 更多例子:
 
--   `农业农村部动态`的网页链接是`http://www.moa.gov.cn/xw/zwdt/`, 对应的`suburl`是`xw/zwdt`
--   `财务公开`的网页链接是`http://www.moa.gov.cn/gk/cwgk_1/`, 对应的`suburl`是`gk/cwgk_1`
--   像[政策法规](http://www.moa.gov.cn/gk/zcfg/)这种页面 (`http://www.moa.gov.cn/gk/zcfg/`), 它**不是**一个合法的分类目录，它是`法律`, `行政法规`, `部门规章`等一堆栏目的集合，这时候请点开对应栏目的`更多 >>`进入栏目的目录，再根据上面的规则提取`suburl`
--   特别地，`图片新闻`对应的`suburl`为`xw/tpxw/`, `最新公开`对应的`suburl`为`govpublic`
+*   `农业农村部动态`的网页链接是`http://www.moa.gov.cn/xw/zwdt/`, 对应的`suburl`是`xw/zwdt`
+*   `财务公开`的网页链接是`http://www.moa.gov.cn/gk/cwgk_1/`, 对应的`suburl`是`gk/cwgk_1`
+*   像[政策法规](http://www.moa.gov.cn/gk/zcfg/)这种页面 (`http://www.moa.gov.cn/gk/zcfg/`), 它**不是**一个合法的分类目录，它是`法律`, `行政法规`, `部门规章`等一堆栏目的集合，这时候请点开对应栏目的`更多 >>`进入栏目的目录，再根据上面的规则提取`suburl`
+*   特别地，`图片新闻`对应的`suburl`为`xw/tpxw/`, `最新公开`对应的`suburl`为`govpublic`
 
 </Route>
+
+### 数据 - 最新发布
+
+<Route author="MisteryMonster" example="/gov/moa/sjzxfb" path="/gov/moa/sjzxfb"/>
 
 ## 中华人民共和国商务部
 
@@ -402,6 +512,24 @@ pageClass: routes
 ### 政策发布
 
 <Route author="nczitzk" example="/gov/mohurd/policy" path="/gov/mohurd/policy"/>
+
+## 重庆市人民政府
+
+### 两江新区信息公开网
+
+#### 党务公开
+
+<Route author="nczitzk" example="/gov/chongqing/ljxq/dwgk" path="/gov/chongqing/ljxq/dwgk"/>
+
+#### 政务公开
+
+<Route author="nczitzk" example="/gov/chongqing/ljxq/zwgk/lzyj" path="/gov/chongqing/ljxq/zwgk/:caty" :paramsDesc="['分类名']">
+
+| 履职依据 | 公示公告 |
+| -------- | -------- |
+| lzyj     | gsgg     |
+
+</Route>
 
 ## 中央纪委国家监委
 

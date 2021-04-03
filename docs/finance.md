@@ -1,8 +1,4 @@
----
-pageClass: routes
----
-
-# 金融
+***
 
 ## CFD
 
@@ -16,6 +12,10 @@ pageClass: routes
 
 <Route author="HenryQW" example="/finviz/news/AAPL" path="/finviz/news/:ticker" :paramsDesc="['股票代码']"/>
 
+## pageClass: routes
+
+# 金融
+
 ## WEEX 华尔街见闻旗下全球投资线上品牌
 
 ### 资讯
@@ -25,6 +25,58 @@ pageClass: routes
 | 最新文章 | 市场要闻 | 交易策略 | 机构观点 | 投资学堂 | 行业观察 | 基金理财 | 分析师投稿 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- | ---------- |
 | 1        | 2        | 3        | 4        | 5        | 6        | 7        | 8          |
+
+## 财联社
+
+### 电报
+
+<Route author="nczitzk" example="/cls/telegraph" path="/cls/telegraph"/>
+
+### 深度
+
+<Route author="nczitzk" example="/cls/depth/1000" path="/cls/depth/:caty" :paramsDesc="['分类代码，可在首页导航栏的目标网址 URL 中找到']">
+
+| 要闻 | 股市 | 环球 | 公司 | 地产 | 券商 | 金融 | 汽车 | 科创版 |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ------ |
+| 1000 | 1003 | 1007 | 1005 | 1006 | 1118 | 1032 | 1119 | 1111   |
+
+</Route>
+
+## 富途牛牛
+
+### 要闻
+
+<Route author="Wsine" example="/futunn/highlights" path="/futunn/highlights" />
+
+## 格隆汇
+
+### 用户文章
+
+<Route author="nczitzk" example="/gelonghui/user/5273" path="/gelonghui/user/:id" :paramsDesc="['用户编号, 可在用户页 URL 中找到']"/>
+
+### 主题文章
+
+<Route author="nczitzk" example="/gelonghui/subject/4" path="/gelonghui/subject/:id"  :paramsDesc="['主题编号, 可在主题页 URL 中找到']"/>
+
+### 搜索关键字
+
+\<Route author="nczitzk" example="/gelonghui/keyword/ 早报" path="/gelonghui/keyword/:keyword" :paramsDesc="\[' 搜索关键字 ']/>
+
+## 世界经济论坛
+
+### 报告
+
+<Route author="nczitzk" example="/weforum/report" path="/weforum/report/:lang?/:year?/:platform?" :paramsDesc="['语言，见下表，默认为 `en`', '年份，对应年份过滤条件，默认为 `所有`', '平台，对应平台过滤条件，默认为 `所有`']">
+
+语言
+
+| English | Español | Français | 中文 | 日本語 |
+| ------- | ------- | -------- | ---- | ------ |
+| en      | es      | fr       | cn   | jp     |
+
+年份 和 平台 这两个参数请参见 [报告页](https://www.weforum.org/reports) 过滤条件处。
+
+</Route>
 
 ## 淘股吧股票论坛
 
@@ -95,3 +147,15 @@ pageClass: routes
 ### 货币政策司公开市场交易公告
 
 <Route author="nczitzk" example="/pbc/tradeAnnouncement" path="/pbc/tradeAnnouncement"/>
+
+## 中证网
+
+### 资讯
+
+<Route author="nczitzk" example="/cs/news/zzkx" path="/cs/news/:caty" :paramsDesc="['资讯类型']">
+
+| 中证快讯 | 行业资讯 |
+| -------- | -------- |
+| zzkx     | hyzx     |
+
+</Route>

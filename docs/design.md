@@ -1,8 +1,4 @@
----
-pageClass: routes
----
-
-# 设计
+***
 
 ## Axis Studios
 
@@ -13,6 +9,16 @@ pageClass: routes
 文章内 Work type 指向的栏目地址，比如： <https://axisstudiosgroup.com/work/full-service-cg-production> 的 tag 为 `full-service-cg-production`，要注意的是 tag 和文章的目录是一样的。
 
 有一些 tag 并不经常使用： `Script`, `direction`, `production`, `design-concept` 等等。
+
+</Route>
+
+## Behance
+
+### User Works
+
+<Route author="MisteryMonster" example="/behance/mishapetrick" path="/behance/:user/:type?" :paramsDesc="['用户名', '类型，可选 `projects` 或 `appreciated`']" radar="1">
+
+Behance 用户主页 URL 获取用户名，如 <https://www.behance.net/mishapetrick> 的用户名为 `mishapetrick`。
 
 </Route>
 
@@ -73,11 +79,32 @@ pageClass: routes
 
 <Route author="nczitzk" example="/monotype/article" path="/monotype/article" />
 
-## Sun Creature
+## Notefolio
 
 ### Works
 
-<Route author="MisteryMonster" example="/sun-creature" path="/sun-creature" />
+<Route author="nczitzk" example="/notefolio" path="/notefolio/:caty?/:order?/:time?/:query?" :paramsDesc="['分类，见下表，默认为 `all`', '排序，可选 `pick` 指 Notefolio 精选，`newest` 指 最新，`noted` 指 知名，默认为 `pick`', '时间，可选 `all` 指 全部，`day` 指 最近24小时，`week` 指 最近一周，`month` 指 最近一个月，`month3` 指 最近三个月，默认为`all`', '关键词，默认为空']">
+
+| 分类 | 韩文分类名      | 中文分类名      |
+| ---- | --------------- | --------------- |
+| all  | 전체            | 全部            |
+| A7   | 공예            | 工艺品          |
+| J7   | 그래픽 디자인   | 平面设计        |
+| B7   | 디지털 아트     | 数字艺术        |
+| C7   | 영상/모션그래픽 | 视频 / 图形动画 |
+| D7   | 브랜딩/편집     | 品牌创建 / 编辑 |
+| E7   | 산업 디자인     | 工业设计        |
+| F7   | UI/UX           | UI/UX           |
+| G7   | 일러스트레이션  | 插画            |
+| K7   | 타이포그래피    | 字体            |
+| H7   | 파인아트        | 纯艺术          |
+| I7   | 포토그래피      | 摄影            |
+
+</Route>
+
+## pageClass: routes
+
+# 设计
 
 ## UI 中国
 
@@ -99,7 +126,7 @@ pageClass: routes
 
 ### 推荐
 
-<Route author="junbaor" example="/zcool/recommend/all" path="/zcool/recommend/:type" :paramsDesc="['推荐类型,详见下面的表格']" radar="1">
+<Route author="junbaor" example="/zcool/recommend/all" path="/zcool/recommend/:type" :paramsDesc="['推荐类型,详见下面的表格']" radar="1" rssbud="1">
 
 推荐类型
 
@@ -111,7 +138,7 @@ pageClass: routes
 
 ### 作品总榜单
 
-<Route author="mexunco" example="/zcool/top/design" path="/zcool/top/:type" :paramsDesc="['推荐类型,详见下面的表格']" radar="1">
+<Route author="mexunco" example="/zcool/top/design" path="/zcool/top/:type" :paramsDesc="['推荐类型,详见下面的表格']" radar="1" rssbud="1">
 
 榜单类型
 
@@ -123,7 +150,7 @@ pageClass: routes
 
 ### 用户作品
 
-<Route author="junbaor" example="/zcool/user/baiyong" path="/zcool/user/:uid" :paramsDesc="['个性域名前缀或者用户ID']" radar="1">
+<Route author="junbaor" example="/zcool/user/baiyong" path="/zcool/user/:uid" :paramsDesc="['个性域名前缀或者用户ID']" radar="1" rssbud="1">
 
 例如:
 

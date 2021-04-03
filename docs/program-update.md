@@ -1,8 +1,20 @@
----
-pageClass: routes
----
+***
 
-# 程序更新
+## AMD
+
+### 显卡驱动更新
+
+<Route author="ysc3839" example="/amd/graphicsdrivers/731F/C0" path="/amd/graphicsdrivers/:id/:rid?" :paramsDesc="['id', 'rid']">
+
+可从设备管理器查看 id 和 rid。如 `PCI\VEN_1002&DEV_731F&SUBSYS_05771043&REV_C1`，则 id 为 `731F`，rid 为 `C1`。
+
+</Route>
+
+## Anki
+
+### Changes
+
+<Route author="nczitzk" example="/anki/changes" path="/anki/changes"/>
 
 ## Apkpure
 
@@ -36,7 +48,7 @@ pageClass: routes
 
 ### 新的 Dropzone 动作
 
-<Route author="HenryQW" example="/aptonic/action" path="/aptonic/action"/>
+<Route author="HenryQW" example="/aptonic/action" path="/aptonic/action/:untested?" :paramsDesc="['填写任意值，将会同时包括非官方的 Dropzone 动作']"/>
 
 ## Bugly SDK
 
@@ -68,6 +80,16 @@ pageClass: routes
 
 <Route author="DIYgod" example="/chrome/webstore/extensions/kefjpfngnndepjbopdmoebkipbgkggaa" path="/chrome/webstore/extensions/:id" :paramsDesc="['扩展程序 id, 可在应用页 URL 中找到']" />
 
+## cpython
+
+### 正式版本发布
+
+<Route author="trim21" example="/cpython" path="/cpython" />
+
+### 所有版本发布
+
+<Route author="trim21" example="/cpython/pre" path="/cpython/pre" />
+
 ## CurseForge
 
 ### 文件更新
@@ -82,7 +104,7 @@ pageClass: routes
 
 ### 镜像有新 Build
 
-<Route author="HenryQW" example="/dockerhub/build/wangqiru/ttrss" path="/dockerhub/build/:owner/:image/:tag?" :paramsDesc="['镜像作者', '镜像名称', '镜像标签，默认 latest']" radar="1"/>
+<Route author="HenryQW" example="/dockerhub/build/wangqiru/ttrss" path="/dockerhub/build/:owner/:image/:tag?" :paramsDesc="['镜像作者', '镜像名称', '镜像标签，默认 latest']" radar="1" rssbud="1"/>
 
 ::: warning 注意
 
@@ -170,21 +192,31 @@ pageClass: routes
 
 <Route author="cielpy" example="/nvidia/webdriverupdate" path="/nvidia/webdriverupdate"/>
 
+## pageClass: routes
+
+# 程序更新
+
 ## PlayStation
 
 ### PlayStation 4 系统更新纪录
 
 见 [#playstation](/game.html#playstation)
 
+## Quicker
+
+### 版本更新
+
+<Route author="Cesaryuan" example="/quicker/update" path="/quicker/update"/>
+
 ## RSSHub
 
 ### 有新路由啦
 
-<Route author="DIYgod" example="/rsshub/routes" path="/rsshub/routes" radar="1"/>
+<Route author="DIYgod" example="/rsshub/routes" path="/rsshub/routes" radar="1" rssbud="1"/>
 
 ### 有新赞助商啦
 
-<Route author="DIYgod" example="/rsshub/sponsors" path="/rsshub/sponsors" radar="1"/>
+<Route author="DIYgod" example="/rsshub/sponsors" path="/rsshub/sponsors" radar="1" rssbud="1"/>
 
 ## sketch.com
 
@@ -207,6 +239,10 @@ pageClass: routes
 ### Changelog
 
 <Route author="cnzgray" example="/typora/changelog" path="/typora/changelog"/>
+
+### Dev Release Changelog
+
+<Route author="nczitzk" example="/typora/changelog-dev/macOS" path="/typora/changelog-dev/:os" :paramsDesc="['操作系统类型, 可选 `macOS` 或 `Windows` 与 `Linux`，默认为 `macOS`']"/>
 
 ## xclient.info
 
@@ -248,10 +284,22 @@ pageClass: routes
 
 ### app 更新
 
-<Route author="zytomorrow" example="/pgyer/:app" path="/pgyer/kz-test" :paramsDesc="['app为下载页最后的路径']" radar="1"/>
+<Route author="zytomorrow" example="/pgyer/:app" path="/pgyer/kz-test" :paramsDesc="['app为下载页最后的路径']" radar="1" rssbud="1"/>
+
+## 腾讯柠檬 Lab
+
+### 柠檬精选 Mac Apps
+
+<Route author="HenryQW" example="/tencent/lemon" path="/tencent/lemon"/>
 
 ## 腾讯云移动直播 SDK
 
 ### 更新日志
 
 <Route author="cielpy" example="/qcloud/mlvb/changelog" path="/qcloud/mlvb/changelog"/>
+
+## 小米应用商店
+
+### 金米奖
+
+<Route author="nczitzk" example="/mi/golden" path="/mi/golden"/>
