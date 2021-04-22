@@ -1,4 +1,14 @@
-***
+---
+pageClass: routes
+---
+
+# 编程
+
+## ACM
+
+### 图灵奖获得者
+
+<Route author="nczitzk" example="/acm/amturingaward" path="/acm/amturingaward"/>
 
 ## AI 研习社
 
@@ -20,11 +30,21 @@
 
 <Route author="fengkx" example="/cve/search/PostgreSQL" path="/cve/search/:keyword" :paramsDesc="['关键词']" />
 
+## dbaplus 社群
+
+<Route author="nczitzk" example="/dbaplus" path="/dbaplus/:tab?" :paramsDesc="['栏目，见下表，默认为全部']">
+
+| 全部 | 数据库 | 运维 | 大数据 | 架构 | PaaS 云 | 职场生涯 | 这里有毒 |
+| ---- | ------ | ---- | ------ | ---- | ------- | -------- | -------- |
+| All  | 153    | 134  | 73     | 141  | 72      | 149      | 21       |
+
+</Route>
+
 ## deeplearning.ai
 
 ### TheBatch 周报
 
-<Route author="nczitzk" example="/deeplearning/thebatch" path="/deeplearning/thebatch"/>
+<Route author="nczitzk" example="/deeplearningai/thebatch" path="/deeplearningai/thebatch"/>
 
 ## Dockone
 
@@ -68,10 +88,10 @@
 
 GitHub 官方也提供了一些 RSS:
 
-*   仓库 releases: `https://github.com/:owner/:repo/releases.atom`
-*   仓库 commits: `https://github.com/:owner/:repo/commits.atom`
-*   用户动态: `https://github.com/:user.atom`
-*   专属动态: `https://github.com/:user.private.atom?token=:secret` (登录后在[仪表盘页面](https://github.com)找到 **Subscribe to your news feed** 字样即可)
+-   仓库 releases: `https://github.com/:owner/:repo/releases.atom`
+-   仓库 commits: `https://github.com/:owner/:repo/commits.atom`
+-   用户动态: `https://github.com/:user.atom`
+-   专属动态: `https://github.com/:user.private.atom?token=:secret` (登录后在[仪表盘页面](https://github.com)找到 **Subscribe to your news feed** 字样即可)
 
 :::
 
@@ -82,6 +102,20 @@ GitHub 官方也提供了一些 RSS:
 ### Trending
 
 <Route author="DIYgod" example="/github/trending/daily/javascript" path="/github/trending/:since/:language?" :paramsDesc="['时间跨度, 可在 [Trending 页](https://github.com/trending/javascript?since=monthly) URL 中找到, 可选 daily weekly monthly', '语言, 可在 [Trending 页](https://github.com/trending/javascript?since=monthly) URL 中找到']" radar="1" rssbud="1"/>
+
+### Topics
+
+<Route author="queensferryme" example="/github/topics/framework" path="/github/topics/:name/:qs?" :paramsDesc="['名称，可以在相关 [Topics 页](https://github.com/topics/framework) URL 中找到', '过滤规则，形如 `l=php&o=desc&s=stars`，详见下表']" radar="1" rssbud="1">
+
+| 参数名 | 描述     | 可选值                                                                                    |
+| ------ | -------- | ----------------------------------------------------------------------------------------- |
+| `l`    | 编程语言 | 例如 `php`，可以在相关 [Topics 页](https://github.com/topics/framework?l=php) URL 中找到  |
+| `o`    | 排序方法 | `asc`（升序）<br>`desc`（降序）                                                           |
+| `s`    | 排序标准 | `stars`（按 star 数量排序）<br>`forks`（按 fork 数量排序）<br>`updated`（按更新日期排序） |
+
+例如 `/github/topics/framework/l=php&o=desc&s=stars` 会生成对应[此页面](https://github.com/topics/framework?l=php&o=desc&s=stars)的 RSS。
+
+</Route>
 
 ### 仓库 Issues
 
@@ -111,9 +145,9 @@ GitHub 官方也提供了一些 RSS:
 | -------- | -------- | -------- | --------------- |
 | `DIYgod` | `RSSHub` | `master` | `lib/router.js` |
 
-> *   **分支名**中如果有 `/` 等特殊字符需使用 urlencode 进行编码，通常 `/` 需要被替换成 `%2f`
-> *   **文件路径**中如果有特殊字符同样需使用 urlencode 进行编码，但文件路径可以正常识别 `/` 字符
-> *   **文件路径**如果以 `.rss`, `.atom`, `.json` 结尾，需要将后缀中的 `.` 替换成 `%2e`
+> -   **分支名**中如果有 `/` 等特殊字符需使用 urlencode 进行编码，通常 `/` 需要被替换成 `%2f`
+> -   **文件路径**中如果有特殊字符同样需使用 urlencode 进行编码，但文件路径可以正常识别 `/` 字符
+> -   **文件路径**如果以 `.rss`, `.atom`, `.json` 结尾，需要将后缀中的 `.` 替换成 `%2e`
 >     > Reeder 订阅 `%2erss` 或类似后缀的时候会出错，此时再在路由后面加上 `.rss` 即可正常订阅
 >     >
 >     > 如： `https://rsshub.app/github/file/DIYgod/RSSHub/master/lib/router%2ejs` 替换成 `https://rsshub.app/github/file/DIYgod/RSSHub/master/lib/router%2ejs.rss` 即可
@@ -292,15 +326,17 @@ GitHub 官方也提供了一些 RSS:
 
 </Route>
 
-## pageClass: routes
-
-# 编程
-
 ## project-zero issues
 
 ### issues
 
 <Route author="hellodword" example="/project-zero-issues" path="/project-zero-issues" />
+
+## react
+
+### react-native
+
+<Route author="xixi" example="/react/react-native-weekly" path="/react/react-native-weekly" />
 
 ## Scala
 
@@ -413,8 +449,8 @@ GitHub 官方也提供了一些 RSS:
 
 <Route author="zhangzhxb520" example="/geektime/news" path="/geektime/news"/>
 
-> *   极客时间专栏需要付费订阅，RSS 仅做更新提醒，不含付费内容.
-> *   极客新闻不需要付费，可通过 RSS 订阅.
+> -   极客时间专栏需要付费订阅，RSS 仅做更新提醒，不含付费内容.
+> -   极客新闻不需要付费，可通过 RSS 订阅.
 
 ## 技术头条
 
@@ -472,19 +508,25 @@ GitHub 官方也提供了一些 RSS:
 
 ### 沸点
 
-<Route author="xyqfer" example="/juejin/pins" path="/juejin/pins"/>
+<Route author="xyqfer laampui" example="/juejin/pins/6824710202487472141" :paramsDesc="['默认为 recommend，见下表']" path="/juejin/pins/:type?">
+
+| 推荐      | 热门 | 上班摸鱼            | 内推招聘            | 一图胜千言          | 今天学到了          | 每天一道算法题      | 开发工具推荐        | 树洞一下            |
+| --------- | ---- | ------------------- | ------------------- | ------------------- | ------------------- | ------------------- | ------------------- | ------------------- |
+| recommend | hot  | 6824710203301167112 | 6819970850532360206 | 6824710202487472141 | 6824710202562969614 | 6824710202378436621 | 6824710202000932877 | 6824710203112423437 |
+
+</Route>
 
 ### 专栏
 
-<Route author="Maecenas" example="/juejin/posts/56852b2460b2a099cdc1d133" path="/juejin/posts/:id" :paramsDesc="['用户 id, 可在用户页 URL 中找到']" radar="1" rssbud="1"/>
+<Route author="Maecenas" example="/juejin/posts/3051900006845944" path="/juejin/posts/:id" :paramsDesc="['用户 id, 可在用户页 URL 中找到']" radar="1" rssbud="1"/>
 
 ### 收藏集
 
-<Route author="isQ" example="/juejin/collections/5791879979bc440066171bdb" path="/juejin/collections/:userId" :paramsDesc="['用户唯一标志符, 在浏览器地址栏URL中能够找到']"/>
+<Route author="isQ" example="/juejin/collections/1697301682482439" path="/juejin/collections/:userId" :paramsDesc="['用户唯一标志符, 在浏览器地址栏URL中能够找到']"/>
 
 ### 单个收藏夹
 
-<Route author="isQ" example="/juejin/collection/5cbf079df265da03462270f9" path="/juejin/collection/:collectionId" :paramsDesc="['收藏夹唯一标志符, 在浏览器地址栏URL中能够找到']"/>
+<Route author="isQ" example="/juejin/collection/6845243180586123271" path="/juejin/collection/:collectionId" :paramsDesc="['收藏夹唯一标志符, 在浏览器地址栏URL中能够找到']"/>
 
 ### 分享
 
@@ -652,6 +694,12 @@ GitHub 官方也提供了一些 RSS:
 ### issues
 
 <Route author="tonghs" example="/manong-weekly" path="/manong-weekly" />
+
+## 美团开放平台
+
+### 美团开放平台公告
+
+<Route author="youzipi" example="/meituan/open/announce" path="/meituan/open/announce"/>
 
 ## 平安银河实验室
 
