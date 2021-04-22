@@ -35,6 +35,12 @@ Fill in parameter `query` with content after `http://export.arxiv.org/api/query?
 
 </RouteEn>
 
+## BioOne
+
+### Featured articles
+
+<RouteEn author="nczitzk" example="/bioone/featured" path="/bioone/featured"/>
+
 ## Cell Journal
 
 <RouteEn author="yech1990" example="/cell/cell/current" path="/cell/cell/:category" supportScihub="1" />
@@ -87,6 +93,31 @@ Google Scholar has strict anti-crawling mechanism implemented, the demo below do
 The parameter id in the route is the id in the URL of the user ’s Google Scholar reference page，for example `https://scholar.google.com/citations?hl=zh-CN&user=mlmE4JMAAAAJ` to `mlmE4JMAAAAJ`
 
 </RouteEn>
+
+## MIT Technology Review
+
+<RouteEn author="zphw" example="/technologyreview" path="/technologyreview" />
+
+### Topics
+
+<RouteEn author="laampui" example="/technologyreview/humans-and-technology" path="/technologyreview/:category_name" :paramsDesc="['see below']" />
+
+
+
+| `:category_name` | Route |
+| -------- | ----- |
+| humans-and-technology | /technologyreview/humans-and-technology |
+| election-2020 | /technologyreview/election-2020 |
+| artificial-intelligence | /technologyreview/artificial-intelligence |
+| biotechnology | /technologyreview/biotechnology |
+| blockchain | /technologyreview/blockchain |
+| climate-change | /technologyreview/climate-change |
+| computing |/technologyreview/computing  |
+| tech-policy | /technologyreview/tech-policy |
+| silicon-valley |  /technologyreview/silicon-valley|
+| smart-cities | /technologyreview/smart-cities|
+| space | /technologyreview/space |
+
 
 ## Nature Journal
 
