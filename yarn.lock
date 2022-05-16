@@ -5441,10 +5441,10 @@ eslint-plugin-prettier@4.0.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-yml@0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-yml/-/eslint-plugin-yml-0.13.0.tgz#37762f3a3f3c32622894910d583da982deaaec6c"
-  integrity sha512-rZvdnhe28jIbgSIZo3qYqkl9hKslyTDfMwqIGDzz873gxghzBw0yeFG+P7sMfOkFfpqwJzZy3IKe2cIiCp4FrA==
+eslint-plugin-yml@0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-yml/-/eslint-plugin-yml-0.15.0.tgz#99b9ed22a8d9d51e189e822c2f78eeb4eda080ce"
+  integrity sha512-fRx7wNmRvK2FjwCmnsTm71FcHlmH7eMyXpa/GgfwAfb/7RDH0XeOaM8Z8KupYxoizYu8eBLGcPv1DzRZzvhnww==
   dependencies:
     debug "^4.3.2"
     lodash "^4.17.21"
