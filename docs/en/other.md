@@ -12,7 +12,7 @@ pageClass: routes
 
 ### App Store/Mac App Store
 
-见 [#app-store-mac-app-store](/en/program-update.html#app-store-mac-app-store)
+See [#app-store-mac-app-store](/en/program-update.html#app-store-mac-app-store)
 
 ## AutoTrader
 
@@ -61,13 +61,13 @@ Official Website: <https://news.yahoo.co.jp/pages/article/20200207>
 
 ### Articles
 
-<Route author="zoenglinghou" example="/darwinawards/all" path="/darwinawards/all" />
+<RouteEn author="zoenglinghou" example="/darwinawards/all" path="/darwinawards/all" />
 
 ## dcinside
 
 ### board
 
-<Route author="zfanta" example="/dcinside/board/programming" path="/dcinside/board/:id" :paramsDesc="['board id']" />
+<RouteEn author="zfanta" example="/dcinside/board/programming" path="/dcinside/board/:id" :paramsDesc="['board id']" />
 
 ## DHL
 
@@ -136,11 +136,17 @@ Official Website: <https://news.yahoo.co.jp/pages/article/20200207>
 
 </RouteEn>
 
+## Lever
+
+### Recruitment
+
+<RouteEn author="tsarlewey" example="/lever/lever" path="/lever/:domain" :paramsDesc="['Company with Lever Board']"/>
+
 ## MITRE
 
 ### All Publications
 
-<Route author="sbilly" example="/mitre/publications" path="/mitre/publications" />
+<RouteEn author="sbilly" example="/mitre/publications" path="/mitre/publications" />
 
 ## Mozilla
 
@@ -238,3 +244,13 @@ Type
 | all | rec       |
 
 </RouteEn>
+
+## 裏垢女子まとめ
+
+### Homepage
+
+<RouteEn author="SettingDust Halcao" example="/uraaka-joshi" path="/uraaka-joshi" radar="1" rssbud="1" puppeteer="1"/>
+
+### User
+
+<RouteEn author="SettingDust Halcao" example="/uraaka-joshi/_rrwq" path="/uraaka-joshi/:id" :paramsDesc="['User ID']" radar="1" rssbud="1" puppeteer="1"/>
