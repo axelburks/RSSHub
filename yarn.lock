@@ -11582,10 +11582,10 @@ pupa@^2.0.1, pupa@^2.1.1:
   dependencies:
     escape-goat "^2.0.0"
 
-puppeteer-extra-plugin-stealth@2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-extra-plugin-stealth/-/puppeteer-extra-plugin-stealth-2.10.0.tgz#583512dcef66af79e5736b02ed6856fd4171b80a"
-  integrity sha512-Bpotsjr9cqjzn7On/hL9xzzpxLFWza0mRCwhzNEGPdORbjkXDGu7dg+6mgVg6EtSI9lOr8M1bUJBFvJhVpFJzA==
+puppeteer-extra-plugin-stealth@2.10.2:
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/puppeteer-extra-plugin-stealth/-/puppeteer-extra-plugin-stealth-2.10.2.tgz#276e5daf1238dd4d407718034785da7d46b12204"
+  integrity sha512-2K2WGZNcLgU6kKmdX+Tyv2U2DbapL8YAqs2hpvWcrflhbx04AAGoZT/JZ5eYSj2vUTtd4n9J+emPOa4Aw0qCaw==
   dependencies:
     debug "^4.1.1"
     puppeteer-extra-plugin "^3.2.0"
