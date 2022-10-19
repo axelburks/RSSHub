@@ -99,9 +99,9 @@ pageClass: routes
 
 ## Darwin Awards
 
-### 文章
+### Award Winners
 
-<Route author="zoenglinghou" example="/darwinawards/all" path="/darwinawards/all"/>
+<Route author="zoenglinghou nciztzk" example="/darwinawards" path="/darwinawards" />
 
 ## dcinside
 
@@ -269,16 +269,6 @@ pageClass: routes
 
 <Route author="sbilly" example="/sans/summit_archive" path="/sans/summit_archive" />
 
-## TransferWise
-
-### 昨日汇率变动
-
-<Route author="HenryQW" example="/transferwise/pair/GBP/USD" path="/transferwise/pair/:source/:target" :paramsDesc="['本币缩写','外币缩写']">
-
-参见支持的[货币列表](https://transferwise.com/tools/exchange-rate-alerts/)。
-
-</Route>
-
 ## TSSstatus（iOS 降级通道）
 
 ### Status
@@ -328,11 +318,30 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 </Route>
 
+## Wise
+
+### 昨日汇率变动
+
+<Route author="HenryQW" example="/wise/pair/GBP/USD" path="/wise/pair/:source/:target" :paramsDesc="['本币缩写','外币缩写']" radar="1">
+
+参见支持的 [货币列表](https://wise.com/tools/exchange-rate-alerts/)。
+
+</Route>
+
 ## 艾瑞
 
 ### 产业研究报告
 
 <Route author="brilon Fatpandac" example="/iresearch/report" path="/iresearch/report"/>
+
+### 周度市场观察
+
+<Route author="nczitzk" example="/iresearch/weekly" path="/iresearch/weekly:category?" :paramsDesc="['分类，见下表，默认为全部']">
+
+| 家电行业 | 服装行业 | 美妆行业 | 食品饮料行业 |
+| ---- | ---- | ---- | ------ |
+
+</Route>
 
 ## 爱 Q 生活网
 
@@ -405,18 +414,6 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 <Route author="DIYgod" example="/dida365/habit/checkins" path="/dida365/habit/checkins" selfhost="1"/>
 
-## 东莞教研网
-
-### 信息公开
-
-<Route author="nczitzk" example="/dgjyw/news" path="/dgjyw/:type" :paramsDesc="['分类']">
-
-| 动态   | 公示           | 通知     |
-| ---- | ------------ | ------ |
-| news | announcement | notice |
-
-</Route>
-
 ## 福利资源 - met.red
 
 ### 福利资源 - met.red
@@ -470,18 +467,6 @@ type 为 all 时，category 参数不支持 cost 和 free
 | 遴选通知 | 综合项目专栏 | 常见问题解答 | 录取公告 | 新闻资讯 | 新闻公告 |
 | ---- | ------ | ------ | ---- | ---- | ---- |
 | lxtz | xmzl   | wtjd   | lqgg | xwzx | xwgg |
-
-</Route>
-
-## 国家自然科学基金委员会
-
-### 新闻通知
-
-<Route author="Derekmini" example="/nsfc/news/jjyw" path="/nsfc/news/:type?" :paramsDesc="['分类, 默认为 `jjyw`']" radar="1" rssbud="1">
-
-| 基金要闻 | 通知公告 | 资助成果 | 科普快讯 |
-| ---- | ---- | ---- | ---- |
-| jjyw | tzgg | zzcg | kpkx |
 
 </Route>
 
@@ -542,64 +527,6 @@ type 为 all 时，category 参数不支持 cost 和 free
 
 1.  显示单个污染成分，例如「pm25」, <https://rsshub.app/aqicn/beijing/pm25>
 2.  逗号分隔显示多个污染成分，例如「pm25,pm10」，[https://rsshub.app/aqicn/beijing/pm25,pm10](https://rsshub.app/aqicn/beijing/pm25.pm10)
-
-## 酷安
-
-### 图文
-
-<Route author="xizeyoupan" example="/coolapk/tuwen" path="/coolapk/tuwen/:type?" :paramsDesc="['默认为hot']">
-
-| 参数名称 | 编辑精选 | 最新     |
-| ---- | ---- | ------ |
-| type | hot  | latest |
-
-</Route>
-
-### 头条
-
-<Route author="xizeyoupan" example="/coolapk/toutiao" path="/coolapk/toutiao/:type?" :paramsDesc="['默认为history']">
-
-| 参数名称 | 历史头条    | 最新     |
-| ---- | ------- | ------ |
-| type | history | latest |
-
-</Route>
-
-### 看看号
-
-<Route author="xizeyoupan" example="/coolapk/dyh/1524" path="/coolapk/dyh/:dyhId" :paramsDesc="['看看号ID']">
-
-::: tip
-仅限于采集**站内订阅**的看看号的内容。看看号 ID 可在看看号界面右上分享 - 复制链接得到。
-:::
-
-</Route>
-
-### 话题
-
-<Route author="xizeyoupan" example="/coolapk/huati/酷安夜话" path="/coolapk/huati/:tag" :paramsDesc="['话题名称']"/>
-
-### 用户
-
-<Route author="xizeyoupan" example="/coolapk/user/3177668/dynamic" path="/coolapk/user/:uid/dynamic" :paramsDesc="['在个人界面右上分享-复制链接获取']"/>
-
-### 热榜
-
-<Route author="xizeyoupan" example="/coolapk/hot" path="/coolapk/hot/:type?/:period?" :paramsDesc="['默认为`jrrm`','默认为`daily`']">
-
-| 参数名称 | 今日热门 | 点赞榜 | 评论榜 | 收藏榜 | 酷图榜 |
-| ---- | ---- | --- | --- | --- | --- |
-| type | jrrm | dzb | plb | scb | ktb |
-
-| 参数名称   | 日榜    | 周榜     |
-| ------ | ----- | ------ |
-| period | daily | weekly |
-
-::: tip
-今日热门没有周榜，酷图榜日榜的参数会变成周榜，周榜的参数会变成月榜。
-:::
-
-</Route>
 
 ## 快递 100
 
@@ -752,6 +679,18 @@ type 为 all 时，category 参数不支持 cost 和 free
 | dateline | reply   | view | lastpost | heat |
 
 </Route>
+
+## 热搜聚合
+
+### 关键词聚合追踪
+
+追踪各大热搜榜上包含特定关键词的条目。
+
+当前收录榜单：*微博热搜*、*今日头条热搜*、*知乎热搜*、*知乎热门视频*、*知乎热门话题*。
+
+数据源: [trending-in-one](https://github.com/huqi-pr/trending-in-one)
+
+<Route author="Jkker" example="/trending/唐山,打人/3" path="/trending/:keywords/:numberOfDays?" radar="1" :paramsDesc="['通过逗号区隔的关键词列表', '向前追溯的天数，默认为3天']"/>
 
 ## 日本郵便
 

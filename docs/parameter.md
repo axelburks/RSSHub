@@ -26,6 +26,14 @@
 
 :::
 
+::: warning 注意
+
+filter 支持正则表达式。由于正则部分特性可被利用于 DoS (ReDOS)，默认引擎`re2`屏蔽了部分`Regexp`功能，且在部分情况下表现不一致。具体差异可以[查看文档](https://github.com/uhop/node-re2#limitations-things-re2-does-not-support)
+
+如果需要指定不同的引擎，请参考[功能特性 -> FILTER_REGEX_ENGINE](install/#pei-zhi-gong-neng-te-xing)。
+
+:::
+
 可以使用以下 URL query 过滤内容，支持通过正则表达式过滤
 
 `filter` 选出想要的内容
@@ -37,6 +45,8 @@
 -   `filter_description`: 过滤描述
 
 -   `filter_author`: 过滤作者
+
+-   `filter_category`: 过滤分类
 
 -   `filter_time`: 过滤时间，仅支持数字，单位为秒。返回指定时间范围内的内容。如果条目没有输出`pubDate`或者格式不正确将不会被过滤
 
@@ -53,6 +63,8 @@
 
 -   `filterout_author`: 过滤作者
 
+-   `filterout_category`: 过滤分类
+
 举例: `https://rsshub.app/bilibili/fav/2267573/801952073?filterout=编曲|摄影`
 
 `filter_case_sensitive` 过滤是否区分大小写，`filter` 和 `filterout`同时适用
@@ -66,6 +78,12 @@
 可以使用 `limit` 参数限制最大条数，主要用于排行榜类 RSS
 
 举例: bilibili 排行榜前 10 <https://rsshub.app/bilibili/ranking/0/3?limit=10>
+
+## 排序结果
+
+通过 `sorted` 参数控制是否对输出的条目按照发布时间进行排序，这对一些会把部分新闻等置顶的源比较有用（如信息发布网）。默认为 `true` 即进行排序。
+
+举例：不重新排序南京大学本科生院教学信息网的公告通知：<https://rsshub.app/nju/jw/ggtz?sorted=false>
 
 ## 全文输出
 
@@ -107,7 +125,7 @@ Telegram 即时预览模式需要在官网制作页面处理模板，请前往[�
 
 这是个测试中的 API
 
-下方操作允许任意用户注入链接模版到最终输出结果，针对于 Web 环境来说这是有害的（XSS）。但是 RSS 阅读器内通常是有限制的环境，通常不会带来副作用，但同时一般路由通常不会需要这些功能。如果需要开启，请将  `ALLOW_USER_HOTLINK_TEMPLATE` 环境变量设置为 `true`
+`image_hotlink_template` 和 `multimedia_hotlink_template` 允许用户提供链接模版用于替换媒体 URL。特定的路由和阅读器组合可能导致用户需要这些功能，但不是非常普遍。敏感字符将被自动转义，不会发生 XSS 攻击。替换范围仅限于媒体元素，即使注入脚本 URL 也不会被加载而造成 XSS。用户能且仅能控制的是「媒体从哪里来」。该功能通常不会带来副作用，如果需要开启这两个参数，请将  `ALLOW_USER_HOTLINK_TEMPLATE` 环境变量设置为 `true`
 
 :::
 

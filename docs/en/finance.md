@@ -12,6 +12,16 @@ pageClass: routes
 
 ## finviz
 
+### News
+
+<RouteEn author="nczitzk" example="/finviz" path="/finviz/:category?" :paramsDesc="['Category, see below, News by default']">
+
+| News | Blog |
+| ---- | ---- |
+| news | blog |
+
+</RouteEn>
+
 ### US Stock News
 
 <RouteEn author="HenryQW" example="/finviz/news/AAPL" path="/finviz/news/:ticker" :paramsDesc="['The stock ticker']"/>
@@ -28,7 +38,25 @@ pageClass: routes
 
 </RouteEn>
 
+## Seeking Alpha
+
+### Summary
+
+<RouteEn author="TonyRL" example="/seekingalpha/TSM/transcripts" path="/seekingalpha/:symbol/:category?" :paramsDesc="['Stock symbol', 'Category, see below, `news` by default']" radar="1" rssbud="1">
+
+| Analysis | News | Transcripts | Press Releases | Related Analysis |
+| ------- | ------- | -------- | ---- | ------ |
+| analysis | news | transcripts | press-releases | related-analysis |
+
+</RouteEn>
+
 ## TokenInsight
+
+::: tip Tips
+
+TokenInsight also provides official RSS, you can take a look at <https://api.tokeninsight.com/reference/rss>.
+
+:::
 
 ### Blogs
 
@@ -49,6 +77,12 @@ Language:
 | zh      | en      |
 
 </RouteEn>
+
+## Unusual Whales
+
+### News Flow
+
+<RouteEn author="TonyRL" example="/unusualwhales/news" path="/unusualwhales/news" radar="1" rssbud="1" />
 
 ## World Economic Forum
 

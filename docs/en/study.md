@@ -35,18 +35,56 @@ pageClass: routes
 
 </RouteEn>
 
-## LinkResearch
+## Link Research
 
-### theses
+### Theses
 
-<RouteEn author="yech1990" example="/linkresearcher/category=theses&subject=生物" path="/linkresearcher/theses/:param" supportScihub="1" :paramsDesc="['key=value，eg. subject=生物']">
+<RouteEn author="y9c" example="/linkresearcher/category=theses&subject=生物" path="/linkresearcher/theses/:param" supportScihub="1" :paramsDesc="['key=value，eg. subject=生物']" radar="1" rssbud="1">
 
 | `:param` | example         | definition                             |
 | -------- | --------------- | -------------------------------------- |
-| category | category=thesis | **one of**，theses/information/careers |
+| category | category=thesis | **one of** theses/information/careers |
 | subject  | subject=生物    | string / undefined                     |
 | columns  | columns=健康    | string / undefined                     |
 | columns  | columns=virus   | string / undefined                     |
+
+</RouteEn>
+
+## MindMeister
+
+### Public Maps
+
+<RouteEn author="TonyRL" example="/mindmeister/mind-map-examples" path="/mindmeister/:category?/:language?" :paramsDesc="['Categories, see the table below, `mind-map-examples` by default', 'Languages, see the table below, `en` by default']" radar="1" rssbud="1">
+
+| Categories | parameter |
+| -------- | --------------- |
+| Featured Map | mind-map-examples |
+| Business | business |
+| Design | design |
+| Education | education |
+| Entertainment | entertainment |
+| Life | life |
+| Marketing | marketing |
+| Productivity | productivity |
+| Summaries | summaries |
+| Technology | technology |
+| Other | other |
+
+| Languages | parameter |
+| -------- | --------------- |
+| English | en |
+| Deutsch | de |
+| Français | fr |
+| Español | es |
+| Português | pt |
+| Nederlands | nl |
+| Dansk | da |
+| Русский | ru |
+| 日本語 | ja |
+| Italiano | it |
+| 简体中文 | zh |
+| 한국어 | ko |
+| Other | other |
 
 </RouteEn>
 
@@ -60,7 +98,7 @@ pageClass: routes
 
 ### News
 
-<RouteEn author="cssxsh" example="/x-mol/news/3" path="/x-mol/news/:tag?" :paramsDesc="['数字编号，可从新闻列表URL得到。为空时从新闻主页获取新闻。']" />
+<RouteEn author="cssxsh" example="/x-mol/news/3" path="/x-mol/news/:tag?" :paramsDesc="['Tag number, can be obtained from news list URL. Empty value means news index.']" />
 
 ## XMind
 
@@ -78,7 +116,7 @@ pageClass: routes
 
 ### News
 
-<RouteEn author="yech1990" example="/zhishifenzi/news/ai" path="/zhishifenzi/news/:type" :paramsDesc="['type，eg. ai']">
+<RouteEn author="y9c" example="/zhishifenzi/news/ai" path="/zhishifenzi/news/:type" :paramsDesc="['type，eg. ai']">
 
 | `:type`   | type name |
 | --------- | --------- |
@@ -96,11 +134,11 @@ pageClass: routes
 
 ### depth
 
-<RouteEn author="yech1990" example="/zhishifenzi/depth" path="/zhishifenzi/depth" />
+<RouteEn author="y9c" example="/zhishifenzi/depth" path="/zhishifenzi/depth" />
 
 ### innovation
 
-<RouteEn author="yech1990" example="/zhishifenzi/innovation/company" path="/zhishifenzi/innovation/:type" :paramsDesc="['type，eg. company']">
+<RouteEn author="y9c" example="/zhishifenzi/innovation/company" path="/zhishifenzi/innovation/:type" :paramsDesc="['type，eg. company']">
 
 | `:type`       | type name     |
 | ------------- | ------------- |

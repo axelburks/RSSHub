@@ -26,6 +26,16 @@ Please make sure you've [fully URL-encoded](https://gchq.github.io/CyberChef/#re
 
 :::
 
+::: warning Warning
+
+filter supports Regex, and due to the fact that some Regex are vulnerable to DoS (ReDoS), default engine `re2` blocks some of these functionalities available in node `Regexp`. These two engines also behaves a bit different in some corner cases. [Details](https://github.com/uhop/node-re2#limitations-things-re2-does-not-support)
+
+
+If you need to use a different engine, please refer to [Deploy->Features->FILTER_REGEX_ENGINE](/en/install/#configuration-features).
+
+:::
+
+
 The following URL query parameters are supported, Regex support is built-in.
 
 Set `filter` to include the content
@@ -37,6 +47,8 @@ Set `filter` to include the content
 -   `filter_description`: filter `description` only
 
 -   `filter_author`: filter `author` only
+
+-   `filter_category`: filter `category` only
 
 -   `filter_time`: filter `pubDate`, in seconds, return specified time range. Item without `pubDate` will not be filtered.
 
@@ -52,6 +64,8 @@ Set `filterout` to exclude unwanted content.
 
 -   `filterout_author`: filter `author` only
 
+-   `filterout_category`: filter `category` only
+
 E.g. [https://rsshub.app/dribbble/popular?filterout=Blue|Yellow|Black](https://rsshub.app/dribbble/popular?filterout=Blue|Yellow|Black)
 
 Set `filter_case_sensitive` to determine whether the filtering keywords should be case sensitive. The parameter would apply to both `filter` and `filterout`.
@@ -65,6 +79,12 @@ E.g. [https://rsshub.app/dribbble/popular?filter=BluE|yeLLow|BlaCK&filter_case_s
 Set `limit` to limit the number of articles in the feed.
 
 E.g. Dribbble Popular Top 10 [https://rsshub.app/dribbble/popular?limit=10](https://rsshub.app/dribbble/popular?limit=10)
+
+## Sorted
+
+Set `sorted` to control whether to sort the output by the publish date (`pubDate`). This is useful for some feeds that pin some entries at the top. Default to `true` i.e. the output is sorted.
+
+E.g. NJU Undergraduate Bulletin Board <https://rsshub.app/nju/jw/ggtz?sorted=false>
 
 ## Fulltext
 
@@ -102,11 +122,11 @@ E.g. <https://rsshub.app/dcard/posts/popular?opencc=t2s>
 
 ## Multimedia processing
 
-::: warning 注意
+::: warning Warning
 
 This is an experimental API
 
-The following operation allows users to inject codes, which is harmful(similar to XSS) in Web environment. However, RSS feed readers, usually, have restrictions set up. While normally routes won't need these functions, please set  `ALLOW_USER_HOTLINK_TEMPLATE` to `true` if you understand how these parameters works and really need to use these features.
+`image_hotlink_template` and `multimedia_hotlink_template` allow users to supply templates to replace media URLs. Certain routes plus certain RSS readers may result in users needing these features, but it's not very common. Vulnerable characters will be escaped automatically, making XSS attack impossible. The scope of URL replacement is limited to media elements, making any script URL unable to load and unable to cause XSS. As a result, users can only take the control of "where are the media from". These features are commonly side-effect-free. To enable these two parameters, please set  `ALLOW_USER_HOTLINK_TEMPLATE` to `true`
 
 :::
 
