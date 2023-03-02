@@ -64,6 +64,16 @@ pageClass: routes
 
 <Route author="nczitzk" example="/35photo/author/mariuszsix"  path="/35photo/author/:id" :paramsDesc="['id，可在对应作者页 URL 中找到']"/>
 
+## 500px 摄影社区
+
+### 部落影集
+
+<Route author="TonyRL" example="/500px/tribe/set/f5de0b8aa6d54ec486f5e79616418001"  path="/500px/tribe/set/:id" :paramsDesc="['部落 ID']" radar="1"/>
+
+### 摄影师作品
+
+<Route author="TonyRL" example="/500px/user/works/hujunli"  path="/500px/user/works/:id" :paramsDesc="['摄影师 ID']" radar="1"/>
+
 ## 8KCosplay
 
 ### 最新
@@ -155,15 +165,15 @@ pageClass: routes
 
 ### 收藏
 
-<Route author="yindaheng98" example="/ehentai/favorites/0/posted/1" path="/ehentai/favorites/:favcat?/:order?/:page?/:routeParams?" :paramsDesc="['收藏夹编号','顺序：posted-按画廊发布时间排序，favorited-按添加收藏的时间排序', '爬获取第多少页的数据', '额外参数；请参阅上面的说明和表格']" anticrawler="1" supportBT="1" />
+<Route author="yindaheng98" example="/ehentai/favorites/0/posted" path="/ehentai/favorites/:favcat?/:order?/:page?/:routeParams?" :paramsDesc="['收藏夹编号','顺序：posted-按画廊发布时间排序，favorited-按添加收藏的时间排序', '翻页参数，对应E站地址中的next参数', '额外参数；请参阅上面的说明和表格']" anticrawler="1" supportBT="1" />
 
 ### 标签
 
-<Route author="yindaheng98" example="/ehentai/tag/language:chinese/1" path="/ehentai/tag/:tag/:page?/:routeParams?" :paramsDesc="['标签', '爬获取第多少页的数据', '额外参数；请参阅上面的说明和表格']" anticrawler="1" supportBT="1" />
+<Route author="yindaheng98" example="/ehentai/tag/language:chinese" path="/ehentai/tag/:tag/:page?/:routeParams?" :paramsDesc="['标签', '翻页参数，对应E站地址中的next参数', '额外参数；请参阅上面的说明和表格']" anticrawler="1" supportBT="1" />
 
 ### 搜索
 
-<Route author="yindaheng98" example="/ehentai/search/f_search=artist%3Amana%24/1" path="/ehentai/search/:params?/:page?/:routeParams?" :paramsDesc="['用于搜索的关键词。可在原网站搜索后复制 `https://e-hentai.org/?` 后面的内容', '爬获取第多少页的数据', '额外参数；请参阅上面的说明和表格']" anticrawler="1" supportBT="1" />
+<Route author="yindaheng98" example="/ehentai/search/f_search=artist%3Amama%24" path="/ehentai/search/:params?/:page?/:routeParams?" :paramsDesc="['用于搜索的关键词。可在原网站搜索后复制 `https://e-hentai.org/?` 后面的内容', '翻页参数，对应E站地址中的next参数', '额外参数；请参阅上面的说明和表格']" anticrawler="1" supportBT="1" />
 
 ## Elite Babes
 
@@ -195,7 +205,7 @@ pageClass: routes
 
 ### 搜索
 
-<Route author="nczitzk" example="/fantia/search/posts/all/daily" path="/fantia/search/:type?/:caty?/:peroid?/:order?/:rating?/:keyword?" :paramsDesc="['类型，见下表，默认为 posts','分类，见下表，也可在搜索页的 URL 中找到，默认为 すべてのクリエイター', '排行时段，见下表，填写该字段即返回排行榜，默认为空，即不排名' ,'排序，见下表，默认为 更新の新しい順', 'R18显示，见下表，默认为 すべて', '关键字，默认为空']">
+<Route author="nczitzk" example="/fantia/search/posts/all/daily" path="/fantia/search/:type?/:caty?/:period?/:order?/:rating?/:keyword?" :paramsDesc="['类型，见下表，默认为 posts','分类，见下表，也可在搜索页的 URL 中找到，默认为 すべてのクリエイター', '排行时段，见下表，填写该字段即返回排行榜，默认为空，即不排名' ,'排序，见下表，默认为 更新の新しい順', 'R18显示，见下表，默认为 すべて', '关键字，默认为空']">
 
 类型
 
@@ -468,7 +478,7 @@ R18 显示
 
 ### 每日一图
 
-<Route author="HenryQW" example="/bjp/apod" path="/bjp/apod"/>
+<Route author="HenryQW" example="/bjp/apod" path="/bjp/apod" radar="1"/>
 
 ## 不羞涩
 
@@ -554,6 +564,12 @@ R18 显示
 
 <Route author="nczitzk" example="/cool18/bbs/keywords/都市" path="/cool18/:id/keywords/:keyword?" :paramsDesc="['分站，见上表，默认为禁忌书屋', '关键字']"/>
 
+## 妹图社
+
+### 最新
+
+<Route author="ocleo1" example="/meituclub/latest" path="/meituclub/latest" />
+
 ## 妹子图
 
 ### 首页（最新）
@@ -596,7 +612,7 @@ R18 显示
 
 ### 频道
 
-<Route author="Fatpandac" example="/qipamaijia/fuli" path="/qipamaijia/:cate?" :paramsDesc="['频道名，可在对应网址中找到，默认为最新']" radar="1" rssbud="1"/>
+<Route author="Fatpandac nczitzk" example="/qipamaijia/fuli" path="/qipamaijia/:cate?" :paramsDesc="['频道名，可在对应网址中找到，默认为最新']" radar="1" rssbud="1"/>
 
 ## 涂鸦王国
 

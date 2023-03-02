@@ -4,11 +4,35 @@ pageClass: routes
 
 # Social Media
 
+## Crossbell
+
+### Notes
+
+<RouteEn author="DIYgod" example="/crossbell/notes" path="/crossbell/notes" radar="1" rssbud="1"/>
+
+### Notes of character
+
+<RouteEn author="DIYgod" example="/crossbell/notes/character/10" path="/crossbell/notes/character/:characterId" radar="1" rssbud="1"/>
+
+### Notes of source
+
+<RouteEn author="DIYgod" example="/crossbell/notes/source/xlog" path="/crossbell/notes/source/:source" radar="1" rssbud="1"/>
+
+### Feeds of following
+
+<RouteEn author="DIYgod" example="/crossbell/feeds/following/10" path="/crossbell/feeds/following/:characterId" radar="1" rssbud="1"/>
+
 ## CuriousCat
 
 ### User
 
 <RouteEn author="lucasew" path="/curiouscat/user/:name" example="/curiouscat/user/kretyn" :paramsDesc="['name, username that is in the URL']" />
+
+## Curius
+
+### User
+
+<RouteEn author="Ovler-Young" example="/curius/links/yuu-yuu" path="/curius/links/:name" :paramsDesc="['Username, can be found in URL']"/>
 
 ## Dev.to
 
@@ -22,11 +46,17 @@ pageClass: routes
 
 </RouteEn>
 
+## Discord
+
+### Channel Messages
+
+<RouteEn author="TonyRL" path="/discord/channel/:channelId" example="/discord/channel/950465850056536084" :paramsDesc="['Channel ID']" radar="1" selfhost="1"/>
+
 ## Disqus
 
 ### Comment
 
-<RouteEn path="/disqus/posts/:forum" example="/disqus/posts/diygod-me" :paramsDesc="['forum, disqus name of the target website']" />
+<RouteEn author="DIYgod" path="/disqus/posts/:forum" example="/disqus/posts/diygod-me" :paramsDesc="['forum, disqus name of the target website']" />
 
 ## Facebook
 
@@ -43,7 +73,7 @@ pageClass: routes
 Type
 
 | artwork | crafts | music | writing |
-| ---- | ---- | ---- | ---- |
+| ------- | ------ | ----- | ------- |
 | artwork | crafts | music | writing |
 
 </RouteEn>
@@ -114,19 +144,39 @@ Type
 
 <RouteEn author="zphw" example="/gab/popular/hot" path="/gab/popular/:sort?" :paramsDesc="['Sort by, `hot` to be Hot Posts and `top` to be Top Posts. Default: hot']" />
 
+## GETTR
+
+### User timeline
+
+<RouteEn author="TonyRL" example="/gettr/user/jasonmillerindc" path="/gettr/user/:id" :paramsDesc="['User id']" radar="1" rssbud="1"/>
+
 ## Instagram
 
 ::: warning
 
-Due to Instagram API restrictions, you have to setup your credentials on the server. See deployment guide for more.
+Due to Instagram Private API restrictions, you have to setup your credentials on the server. 2FA is not supported. See [deployment guide](https://docs.rsshub.app/en/install/) for more.
 
-If you don't want to setup credentials, use Picuki.
+If you don't want to setup credentials, you can use [Picnob](#picnob) or [Picuki](#picuki).
 
 :::
 
-### User Profile
+### User Profile / Hashtag - Private API
 
-<RouteEn author="oppilate DIYgod" example="/instagram/user/stefaniejoosten" path="/instagram/:category/:key" :paramsDesc="['Feed category. Only user category is supported for now.','Key for such category. E.g. username/ID for user feed']" radar="1" anticrawler="1"/>
+<RouteEn author="oppilate DIYgod" example="/instagram/user/stefaniejoosten" path="/instagram/:category/:key" :paramsDesc="['Feed category, see table below','Username / Hashtag name']" radar="1" anticrawler="1" selfhost="1">
+
+| User timeline | Hashtag |
+| ---------- | ---- |
+| user       | tags  |
+
+::: tip Tips
+It's highly recommended to deploy with Redis cache enabled.
+:::
+
+</RouteEn>
+
+### User Profile / Hashtag - Cookie
+
+<RouteEn author="TonyRL" example="/instagram/2/user/stefaniejoosten" path="/instagram/2/:category/:key" :paramsDesc="['Feed category, see table above','Username / Hashtag name']" radar="1" anticrawler="1" selfhost="1" />
 
 ## Lofter
 
@@ -150,8 +200,8 @@ If you don't want to setup credentials, use Picuki.
 
 Official user RSS:
 
-- RSS: `https://**:instance**/users/**:username**.rss` ([Example](https://pawoo.net/users/pawoo_support.rss))
-- Atom: ~~`https://**:instance**/users/**:username**.atom`~~ (Only for pawoo.net, [example](https://pawoo.net/users/pawoo_support.atom))
+-   RSS: `https://**:instance**/users/**:username**.rss` ([Example](https://pawoo.net/users/pawoo_support.rss))
+-   Atom: ~~`https://**:instance**/users/**:username**.atom`~~ (Only for pawoo.net, [example](https://pawoo.net/users/pawoo_support.atom))
 
 These feed do not include boosts (a.k.a. reblogs). RSSHub provides a feed for user timeline based on the Mastodon API, but to use that, you will need to create application on a Mastodon instance, and configure your RSSHub instance. Check the [Deploy Guide](/en/install/#route-specific-configurations) for route-specific configurations.
 
@@ -173,6 +223,12 @@ These feed do not include boosts (a.k.a. reblogs). RSSHub provides a feed for us
 
 <RouteEn author="notofoe" example="/mastodon/account_id/mastodon.social/23634/statuses/only_media" path="/mastodon/account/:site/:account_id/statuses/:only_media?" :paramsDesc="['instance address, only domain, no `http://` or `https://` protocol header', 'account id. login your instance, then search for the user profile; the account id is in the url', 'whether only display media content, default to false, any value to true']"/>
 
+## Misskey
+
+### Featured Notes
+
+<RouteEn author="Misaka13514" example="/misskey/notes/featured/misskey.io" path="/misskey/notes/featured/:site" :paramsDesc="['instance address, domain only, without `http://` or `https://` protocol header']" radar="1" rssbud="1"/>
+
 ## piapro
 
 ### User latest works
@@ -183,6 +239,12 @@ These feed do not include boosts (a.k.a. reblogs). RSSHub provides a feed for us
 
 <RouteEn author="hoilc" example="/piapro/public/music/miku/2" path="/piapro/public/:type/:tag?/:category?" :paramsDesc="['work type, can be `music`,`illust`,`text`','`tag` parameter in url','category ID, `categoryId` parameter in url']"/>
 
+## Picnob
+
+### User Profile
+
+<RouteEn author="TonyRL" example="/picnob/user/stefaniejoosten" path="/picnob/profile/:id" :paramsDesc="['Instagram id']" radar="1" rssbud="1" />
+
 ## Picuki
 
 ### User Profile
@@ -190,7 +252,7 @@ These feed do not include boosts (a.k.a. reblogs). RSSHub provides a feed for us
 <RouteEn author="hoilc Rongronggg9" example="/picuki/profile/stefaniejoosten" path="/picuki/profile/:id/:functionalFlag?" :paramsDesc="['Instagram id','functional flag, see the table below']" radar="1" rssbud="1">
 
 | functionalFlag | Video embedding                         | Fetching Instagram Stories |
-|----------------|-----------------------------------------|----------------------------|
+| -------------- | --------------------------------------- | -------------------------- |
 | 0              | off, only show video poster as an image | off                        |
 | 1 (default)    | on                                      | off                        |
 | 10             | on                                      | on                         |
@@ -214,17 +276,21 @@ Though, every Story expires after 24 hours, so it may be not so serious.
 
 <RouteEn author="EYHN" path="/pixiv/user/:id" example="/pixiv/user/15288095" :paramsDesc="['user id, available in user\'s homepage URL']" radar="1" rssbud="1"/>
 
+### User Novels
+
+<RouteEn author="TonyRL" example="/pixiv/user/novels/27104704" path="/pixiv/user/novels/:id" :paramsDesc="['User id, available in user\'s homepage URL']" radar="1" rssbud="1"/>
+
 ### Rankings
 
 <RouteEn author="EYHN" path="/pixiv/ranking/:mode/:date?" example="/pixiv/ranking/week" :paramsDesc="['rank type', 'format: `2018-4-25`']" radar="1" rssbud="1">
 
-| pixiv daily rank | pixiv weekly rank | pixiv monthly rank | pixiv male rank | pixiv female rank | pixiv original rank | pixiv rookie user rank |
-| ---------------- | ----------------- | ------------------ | --------------- | ----------------- | ------------------- | ---------------------- |
-| day              | week              | month              | day_male        | day_female        | week_original       | week_rookie            |
+| daily rank | weekly rank | monthly rank | male rank | female rank | AI-generated work Rankings | original rank | rookie user rank |
+| ---------- | ----------- | ------------ | --------- | ----------- | -------------------------- | ------------- | ---------------- |
+| day        | week        | month        | day_male  | day_female  | day_ai                     | week_original | week_rookie      |
 
-| pixiv R-18 daily rank | pixiv R-18 male rank | pixiv R-18 female rank | pixiv R-18 weekly rank | pixiv R-18G rank |
-| --------------------- | -------------------- | ---------------------- | ---------------------- | ---------------- |
-| day_r18               | day_male_r18         | day_female_r18         | week_r18               | week_r18g        |
+| R-18 daily rank | R-18 AI-generated work | R-18 male rank | R-18 female rank | R-18 weekly rank | R-18G rank |
+| --------------- | ---------------------- | -------------- | ---------------- | ---------------- | ---------- |
+| day_r18         | day_r18_ai             | day_male_r18   | day_female_r18   | week_r18         | week_r18g  |
 
 </RouteEn>
 
@@ -232,25 +298,69 @@ Though, every Story expires after 24 hours, so it may be not so serious.
 
 <RouteEn author="DIYgod" example="/pixiv/search/麻衣/popular/2" path="/pixiv/search/:keyword/:order?/:mode?" :paramsDesc="['keyword', 'rank mode, empty or other for time order, popular for popular order', 'filte R18 content']" radar="1" rssbud="1">
 
-| only not R18 | only R18 | no filter |
-| ----------------- | ------------------------- | ------------------------- |
-| safe           | r18              | empty or other            |
+| only not R18 | only R18 | no filter      |
+| ------------ | -------- | -------------- |
+| safe         | r18      | empty or other |
 
 </RouteEn>
 
 ### Following timeline
 
-<RouteEn author="ClarkeCheng" example="/pixiv/user/illustfollows" path="/pixiv/user/illustfollows" radar="1" rssbud="1" selfhost="1"/>
+<RouteEn author="ClarkeCheng" example="/pixiv/user/illustfollows" path="/pixiv/user/illustfollows" radar="1" rssbud="1" selfhost="1">
+
 ::: warning
 
 Only for self-hosted
 
 :::
+
 </RouteEn>
 
-## pixiv-fanbox
+## pixivFANBOX
+
+### User
 
 <RouteEn author="sgqy" example="/fanbox/otomeoto" path="/fanbox/:user?" :paramsDesc="['User name. Can be found in URL. Default is official news']"/>
+
+## Plurk
+
+### Topic
+
+<RouteEn author="TonyRL" path="/plurk/topic/:topic" example="/plurk/topic/standwithukraine" :paramsDesc="['Topic ID, can be found in URL']" radar="1" rssbud="1"/>
+
+### Top
+
+<RouteEn author="TonyRL" path="/plurk/top/:category?/:lang?" example="/plurk/top/topReplurks" :paramsDesc="['Category, see the table below, `topReplurks` by default', 'Language, see the table below, `en` by default']" radar="1" rssbud="1">
+
+| Top Replurks | Top Favorites | Top Responded |
+| ------------ | ------------- | ------------- |
+| topReplurks  | topFavorites  | topResponded  |
+
+| English | 中文（繁體） |
+| ------- | ----------- |
+| en     | zh      |
+
+</RouteEn>
+
+### Anonymous
+
+<RouteEn author="TonyRL" path="/plurk/anonymous" example="/plurk/anonymous" radar="1" rssbud="1"/>
+
+### Search
+
+<RouteEn author="TonyRL" path="/plurk/search/:keyword" example="/plurk/search/FGO" :paramsDesc="['Search keyword']" radar="1" rssbud="1"/>
+
+### Hotlinks
+
+<RouteEn author="TonyRL" path="/plurk/hotlinks" example="/plurk/hotlinks" radar="1" rssbud="1"/>
+
+### Plurk News
+
+<RouteEn author="TonyRL" path="/plurk/news/:lang?" example="/plurk/news/:lang?" :paramsDesc="['Language, see the table above, `en` by default']" radar="1" rssbud="1"/>
+
+### User
+
+<RouteEn author="TonyRL" path="/plurk/user/:user" example="/plurk/user/plurkoffice" :paramsDesc="['User ID, can be found in URL']" radar="1" rssbud="1"/>
 
 ## Telegram
 
@@ -259,7 +369,7 @@ Only for self-hosted
 <RouteEn author="DIYgod Rongronggg9" path="/telegram/channel/:username/:routeParams?" example="/telegram/channel/awesomeDIYgod/searchQuery=%23DIYgod的豆瓣动态" :paramsDesc="['channel username', 'extra parameters, see the table below']" radar="1" rssbud="1">
 
 | Key                   | Description                                                           | Accepts                                              | Defaults to       |
-|-----------------------|-----------------------------------------------------------------------|------------------------------------------------------|-------------------|
+| --------------------- | --------------------------------------------------------------------- | ---------------------------------------------------- | ----------------- |
 | showLinkPreview       | Show the link preview from Telegram                                   | 0/1/true/false                                       | true              |
 | showViaBot            | For messages sent via bot, show the bot                               | 0/1/true/false                                       | true              |
 | showReplyTo           | For reply messages, show the target of the reply                      | 0/1/true/false                                       | true              |
@@ -320,7 +430,7 @@ There are two routes (`/twitter/user` and `/twitter/keyword`) comes with Web API
 Specify options (in the format of query string) in parameter `routeParams` to control some extra features for Tweets
 
 | Key                            | Description                                                                                                                          | Accepts                | Defaults to                               |
-|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|------------------------|-------------------------------------------|
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------------------------------------- |
 | `readable`                     | Enable readable layout                                                                                                               | `0`/`1`/`true`/`false` | `false`                                   |
 | `authorNameBold`               | Display author name in bold                                                                                                          | `0`/`1`/`true`/`false` | `false`                                   |
 | `showAuthorInTitle`            | Show author name in title                                                                                                            | `0`/`1`/`true`/`false` | `false` (`true` in `/twitter/followings`) |
@@ -359,7 +469,7 @@ generates
 
 <RouteEn author="yindaheng98 Rongronggg9" path="/twitter/media/:id/:routeParams?" example="/twitter/media/DIYgod" :paramsDesc="['user id', 'extra parameters, see the table above.']" radar="1" rssbud="1"/>
 
-## User following timeline
+### User following timeline
 
 <RouteEn author="DIYgod" example="/twitter/followings/DIYgod" path="/twitter/followings/:id/:routeParams?" :paramsDesc="['user id', 'extra parameters, see the table above']" radar="1" rssbud="1" selfhost="1">
 
@@ -386,6 +496,18 @@ This route requires Twitter token's corresponding id, therefore it's only availa
 ### Trends
 
 <RouteEn author="sakamossan" example="/twitter/trends/23424856" path="/twitter/trends/:woeid?" :paramsDesc="['Yahoo! Where On Earth ID. default to woeid=1 (World Wide)']" radar="1" rssbud="1"/>
+
+### Collection
+
+<RouteEn author="TonyRL" example="/twitter/collection/DIYgod/1527857429467172864" path="/twitter/collection/:uid/:collectionId/:routeParams?" :paramsDesc="['User name, should match the generated token', 'Collection ID, can be found in URL', 'extra parameters, see the table above']" radar="1" rssbud="1" selfhost="1"/>
+
+::: warning
+
+This route requires Twitter token's corresponding id, therefore it's only available when self-hosting, refer to the [Deploy Guide](/en/install/#route-specific-configurations) for route-specific configurations.
+
+:::
+
+</RouteEn>
 
 ## Vimeo
 
@@ -430,10 +552,68 @@ YouTube provides official RSS feeds for channels, for instance <https://www.yout
 
 <RouteEn author="DIYgod" path="/youtube/channel/:id/:embed?" example="/youtube/channel/UCDwDMPOZfxVV0x_dz0eQ8KQ" :paramsDesc="['YouTube channel id', 'Default to embed the video, set to any value to disable embedding']" radar="1" rssbud="1"/>
 
+### Custom URL
+
+<RouteEn author="TonyRL" path="/youtube/c/:id/:embed?" example="/youtube/c/YouTubeCreators" :paramsDesc="['YouTube custom URL', 'Default to embed the video, set to any value to disable embedding']" radar="1" rssbud="1"/>
+
 ### Playlist
 
 <RouteEn author="HenryQW" path="/youtube/playlist/:id/:embed?" example="/youtube/playlist/PLqQ1RwlxOgeLTJ1f3fNMSwhjVgaWKo_9Z" :paramsDesc="['YouTube playlist id', 'Default to embed the video, set to any value to disable embedding']" radar="1" rssbud="1"/>
 
+### Community
+
+<RouteEn author="TonyRL" path="/youtube/community/:handle" example="/youtube/community/@JFlaMusic" :paramsDesc="['YouTube handles or channel id']" radar="1" rssbud="1"/>
+
 ### Subscriptions
 
 <RouteEn author="TonyRL" path="/youtube/subscriptions/:embed?" example="/youtube/subscriptions" :paramsDesc="['Default to embed the video, set to any value to disable embedding']" selfhost="1" radar="1" rssbud="1"/>
+
+### Music Charts
+
+<RouteEn author="TonyRL" path="/youtube/charts/:category?/:country?/:embed?" example="/youtube/charts" :paramsDesc="['Chart, see table below, default to `TopVideos`', 'Country Code, see table below, default to global', 'Default to embed the video, set to any value to disable embedding']" radar="1" rssbud="1">
+
+::: details Chart
+| Top artists | Top songs | Top music videos | Trending |
+| ----------- | --------- | ---------------- | -------- |
+| TopArtists  | TopSongs  | TopVideos        | TrendingVideos |
+:::
+
+::: details Country Code
+| Argentina | Australia | Austria | Belgium | Bolivia | Brazil | Canada |
+| --------- | --------- | ------- | ------- | ------- | ------ | ------ |
+| ar        | au        | at      | be      | bo      | br     | ca     |
+
+| Chile | Colombia | Costa Rica | Czechia | Denmark | Dominican Republic | Ecuador |
+| ----- | -------- | ---------- | ------- | ------- | ------------------ | ------- |
+| cl    | co       | cr         | cz      | dk      | do                 | ec      |
+
+| Egypt | El Salvador | Estonia | Finland | France | Germany | Guatemala |
+| ----- | ----------- | ------- | ------- | ------ | ------- | --------- |
+| eg    | sv          | ee      | fi      | fr     | de      | gt        |
+
+| Honduras | Hungary | Iceland | India | Indonesia | Ireland | Israel | Italy |
+| -------- | ------- | ------- | ----- | --------- | ------- | ------ | ----- |
+| hn       | hu      | is      | in    | id        | ie      | il     | it    |
+
+| Japan | Kenya | Luxembourg | Mexico | Netherlands | New Zealand | Nicaragua |
+| ----- | ----- | ---------- | ------ | ----------- | ----------- | --------- |
+| jp    | ke    | lu         | mx     | nl          | nz          | ni        |
+
+| Nigeria | Norway | Panama | Paraguay | Peru | Poland | Portugal | Romania |
+| ------- | ------ | ------ | -------- | ---- | ------ | -------- | ------- |
+| ng      | no     | pa     | py       | pe   | pl     | pt       | ro      |
+
+| Russia | Saudi Arabia | Serbia | South Africa | South Korea | Spain | Sweden | Switzerland |
+| ----- | ------------- | ------ | ------------ | ----------- | ----- | ------ | ----------- |
+| ru    | sa            | rs     | za           | kr          | es    | se     | ch          |
+
+| Tanzania | Turkey | Uganda | Ukraine | United Arab Emirates | United Kingdom | United States |
+| -------- | ------ | ------ | ------- | -------------------- | -------------- | ------------- |
+| tz       | tr     | ug     | ua      | ae                   | gb             | us            |
+
+| Uruguay | Zimbabwe |
+| ------- | -------- |
+| uy      | zw       |
+:::
+
+</RouteEn>

@@ -20,6 +20,7 @@ Deploy for public access may require:
 3. [Redis](https://redis.io/download)
 4. [Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 5. [Google App Engine](https://cloud.google.com/appengine/)
+6. [Fly.io](https://fly.io/)
 
 ## Docker Image
 
@@ -184,16 +185,16 @@ $ cd RSSHub
 
 Execute the following commands to install dependencies (Do not add the `--production` parameter for development).
 
-Using `npm`
-
-```bash
-$ npm ci --production
-```
-
-Or `yarnv1` (not recommended)
+Using `yarnv1`
 
 ```bash
 $ yarn --production
+```
+
+or using `npm`
+
+```bash
+$ npm ci --production
 ```
 
 ### Launch
@@ -201,13 +202,13 @@ $ yarn --production
 Under `RSSHub`'s root directory, execute the following commands to launch
 
 ```bash
-$ npm start
+$ yarn start
 ```
 
 Or
 
 ```bash
-$ yarn start
+$ npm start
 ```
 
 Or use [PM2](https://pm2.io/docs/plus/quick-start/)
@@ -227,13 +228,15 @@ Refer to our [Guide](https://docs.rsshub.app/en/) for usage. Replace `https://rs
 On arm/arm64, this deployment method does not include puppeteer dependencies. To enable puppeteer, install Chromium from your distribution repositories first, then set `CHROMIUM_EXECUTABLE_PATH` to its executable path.
 
 Debian:
+
 ```bash
-$ apt install chroium
+$ apt install chromium
 $ echo >> .env
 $ echo 'CHROMIUM_EXECUTABLE_PATH=chromium' >> .env
 ```
 
 Ubuntu/Raspbian:
+
 ```bash
 $ apt install chromium-browser
 $ echo >> .env
@@ -285,7 +288,13 @@ in pkgs.stdenv.mkDerivation {
 
 ### Notice
 
-Heroku accounts with unverified payment methods have only 550 hours of credit per month (about 23 days), and up to 1,000 hours per month with verified payment methods.
+::: warning Update
+
+Heroku [no longer](https://blog.heroku.com/next-chapter) offers free product plans.
+
+:::
+
+~~Heroku accounts with unverified payment methods have only 550 hours of credit per month (about 23 days), and up to 1,000 hours per month with verified payment methods.~~
 
 ### Instant deploy (without automatic update)
 
@@ -293,14 +302,53 @@ Heroku accounts with unverified payment methods have only 550 hours of credit pe
 
 ### Automatic deploy upon update
 
-1. [Fork RSSHub](https://github.com/login?return_to=%2FDIYgod%2FRSSHub) to your GitHub account.
+1. [Fork RSSHub](https://github.com/DIYgod/RSSHub/fork) to your GitHub account.
 2. Deploy your fork to Heroku: `https://heroku.com/deploy?template=URL`, where `URL` is your fork address (_e.g._ `https://github.com/USERNAME/RSSHub`).
 3. Configure `automatic deploy` in Heroku app to follow the changes to your fork.
 4. Install [Pull](https://github.com/apps/pull) app to keep your fork synchronized with RSSHub.
 
-## Deploy to Vercel(Zeit Now)
+## Deploy to Vercel (ZEIT Now)
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/DIYgod/RSSHub)
+
+## Deploy to Fly.io
+
+1. [Fork RSSHub](https://github.com/DIYgod/RSSHub/fork) to your GitHub account.
+2. Clone the source code from your fork.
+    ```bash
+    $ git clone https://github.com/<your username>/RSSHub.git
+    $ cd RSSHub
+    ```
+3. [Sign up for Fly.io](https://fly.io/app/sign-up) and install the [`flyctl` CLI](https://fly.io/docs/hands-on/install-flyctl/).
+4. Run `flyctl launch` and choose a unique name and region to deploy.
+5. Use `flyctl secrets set KEY=VALUE` to [configure specific routes](#configuration-route-specific-configurations).
+6. [Set up automatic deployment via GitHub Actions](https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/)
+7. Install the [Pull](https://github.com/apps/pull) GitHub app to keep your fork synchronized with upstream.
+8. (Optional) Point your own domain to the IPv4 and IPv6 addresses provided by fly.io, then go to Certificate page and add the domain.
+
+### Configure built-in Upstash Redis as cache
+
+Run
+
+```bash
+$ flyctl redis create
+```
+
+under the `RSSHub` folder in order to create a new Redis database; [eviction](https://redis.io/docs/reference/eviction/) is recommended to be turned on. After creation is successful, a string in the form of `redis://default:<password>@<domain>.upstash.io` will be printed.
+
+Then run
+
+```bash
+$ flyctl secrets set CACHE_TYPE=redis REDIS_URL='<the printed connection string>'
+```
+
+to configure RSSHub to use this Redis database for caching.
+
+## Deploy to PikaPods
+
+Run RSSHub from just $1/month. Includes automatic updates and $5 free starting credit.
+
+[![Run on PikaPods](https://www.pikapods.com/static/run-button.svg)](https://www.pikapods.com/pods?run=rsshub)
 
 ## Deploy to Google App Engine(GAE)
 
@@ -407,7 +455,9 @@ Configure RSSHub by setting environment variables
 
 `REQUEST_TIMEOUT`: milliseconds to wait for the server to end the response before aborting the request with error, default to `3000`
 
-`UA`: user agent, default to `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36`
+`UA`: user agent, using random user agent (Chrome on macOS) by default
+
+`NO_RANDOM_UA`: disable random user agent, default to `null`
 
 ### CORS Request
 
@@ -551,11 +601,15 @@ It is also valid to contain route parameters, e.g. `/weibo/user/2612249974`.
 
 ::: tip Experimental features
 
-Configs in this sections are in beta stage, and are turn off by default. Please read corresponded description and turn on if necessary.
+Configs in this sections are in beta stage, and **are turn off by default**. Please read corresponded description and turn on if necessary.
 
 :::
 
 `ALLOW_USER_HOTLINK_TEMPLATE`: [Parameters->Multimedia processing](/en/parameter.html#multimedia-processing)
+
+`FILTER_REGEX_ENGINE`: Define Regex engine used in [Parameters->filtering](/en/parameter.html#filtering). Valid value are `[re2, regexp]`. Default value is `re2`. We suggest public instance should leave this value to default, and this option right now is mainly for backward compatibility.
+
+`ALLOW_USER_SUPPLY_UNSAFE_DOMAIN`: allow users to provide a domain as a parameter to routes that are not in their allow list, respectively. Public instances are suggested to leave this value default, as it may lead to [Server-Side Request Forgery (SSRF)](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery)
 
 ### Other Application Configurations
 
@@ -567,7 +621,7 @@ Configs in this sections are in beta stage, and are turn off by default. Please 
 
 `NODE_NAME`: node name, used for load balancing, identify the current node
 
-`PUPPETEER_WS_ENDPOINT`: browser WebSocket endpoint which can be used as an argument to puppeteer.connect, refer to [browserWSEndpoint](https://pptr.dev/#?product=Puppeteer&show=api-browserwsendpoint)
+`PUPPETEER_WS_ENDPOINT`: browser WebSocket endpoint which can be used as an argument to puppeteer.connect, refer to [browserWSEndpoint](https://pptr.dev/api/puppeteer.browser.wsendpoint)
 
 `CHROMIUM_EXECUTABLE_PATH`: path to the Chromium (or Chrome) executable. If puppeteer is not bundled with Chromium (manually skipped downloading or system architecture is arm/arm64), configuring this can effectively enable puppeteer. Or alternatively, if you prefer Chrome to Chromium, this configuration will help. **WARNING**: only effective when `PUPPETEER_WS_ENDPOINT` is not set; only useful for manual deployment, for Docker, please use the `chromium-bundled` image instead.
 
@@ -588,6 +642,10 @@ See docs of the specified route and `lib/config.js` for detailed information.
     -   `BITBUCKET_USERNAME`: Your Bitbucket username
     -   `BITBUCKET_PASSWORD`: Your Bitbucket app password
 
+-   Discord
+
+    -   `DISCORD_AUTHORIZATION`: Discord authorization token, can be found in the header of XHR requests after logging in Discord web client
+
 -   Discuz cookie
 
     -   `DISCUZ_COOKIE_{cid}`: Cookie of a forum powered by Discuz, cid can be anything from 00 to 99. When visiting a Discuz route, use cid to specify this cookie.
@@ -605,8 +663,13 @@ See docs of the specified route and `lib/config.js` for detailed information.
     -   `EH_IPB_MEMBER_ID`: The value of `ipb_member_id` in the cookie header after logging in E-Hentai
     -   `EH_IPB_PASS_HASH`: The value of `ipb_pass_hash` in the cookie header after logging in E-Hentai
     -   `EH_SK`: The value of `sk` in the cookie header after logging in E-Hentai
+    -   `EH_STAR`: The value of `star` in the cookie header if your account has stars. If this value is set, image limit allocation will links to the account rather than IP address
     -   `EH_IGNEOUS`: The value of `igneous` in the cookie header after logging in ExHentai. If this value is set, RSS will be generated from ExHentai
     -   `EH_IMG_PROXY`: Cover proxy address. If this is set, the link to the cover image will be replaced with this value at the beginning. When using ExHentai, the cover image requires cookies to access it, so you can use this with a cookie-added proxy server to access the cover image without cookies in some readers.
+
+-   Fantia
+
+    -   `FANTIA_COOKIE`: The `cookie` after login can be obtained by viewing the request header in the console, If not filled in will cause some posts that require login to read to get exceptions
 
 -   GitHub: [Access Token application](https://github.com/settings/tokens)
 
@@ -618,11 +681,16 @@ See docs of the specified route and `lib/config.js` for detailed information.
 
 -   Instagram:
 
-    -   `IG_USERNAME`: Your Instagram username
-    -   `IG_PASSWORD`: Your Instagram password
-    -   `IG_PROXY`: Proxy URL for Instagram
+    -   `IG_USERNAME`: Your Instagram username (Private API only)
+    -   `IG_PASSWORD`: Your Instagram password (Private API only)
+    -   `IG_PROXY`: Proxy URL for Instagram (Private API only, optional)
+    -   `IG_COOKIE`: Your Instagram cookie (Cookie only)
 
     Warning: Two Factor Authentication is **not** supported.
+
+-   Iwara:
+
+    -   `IWARA_COOKIE`: Cookie of Iwara User
 
 -   Last.fm
 
@@ -645,13 +713,17 @@ See docs of the specified route and `lib/config.js` for detailed information.
     -   `NHENTAI_USERNAME`: nhentai username or email
     -   `NHENTAI_PASSWORD`: nhentai password
 
+-   Pixabay: [Documentation](https://pixabay.com/api/docs/)
+
+    -   `PIXABAY_KEY`: Pixabay API key
+
 -   pixiv: [Registration](https://accounts.pixiv.net/signup)
 
     -   `PIXIV_REFRESHTOKEN`: Please refer to [this article](https://gist.github.com/ZipFile/c9ebedb224406f4f11845ab700124362) to get a `refresh_token`
     -   `PIXIV_BYPASS_CDN`: bypass Cloudflare bot check by directly accessing Pixiv source server, defaults to disable, set `true` or `1` to enable
     -   `PIXIV_BYPASS_HOSTNAME`: Pixiv source server hostname or IP address, hostname will be resolved to IPv4 address via `PIXIV_BYPASS_DOH`, defaults to `public-api.secure.pixiv.net`
     -   `PIXIV_BYPASS_DOH`: DNS over HTTPS endpoint, it must be compatible with Cloudflare or Google DoH JSON schema, defaults to `https://1.1.1.1/dns-query`
-    -   `PIXIV_IMG_PROXY`: Used as a proxy for image addresses, as pixiv images have anti-theft, default to `https://i.pixiv.cat`
+    -   `PIXIV_IMG_PROXY`: Used as a proxy for image addresses, as pixiv images have anti-theft, default to `https://i.pixiv.re`
 
 -   pixiv fanbox: Get paid content
 
@@ -676,10 +748,10 @@ See docs of the specified route and `lib/config.js` for detailed information.
 
 -   Twitter: [Application creation](https://apps.twitter.com)
 
-    - `TWITTER_CONSUMER_KEY`: Twitter Developer API key, support multiple keys, split them with `,`
-    - `TWITTER_CONSUMER_SECRET`: Twitter Developer API key secret, support multiple keys, split them with `,`
-    - `TWITTER_WEBAPI_AUTHORIZAION`: Twitter Web API authorization. If either of the above environment variables is not set, the Twitter Web API will be used. However, no need to set this environment var since every single user and guest share the same authorization token which has already been built into RSSHub.
-    - `TWITTER_TOKEN_{handler}`: The token generated by the corresponding Twitter handler, replace `{handler}` with the Twitter handler, the value is a combination of `Twitter API key, Twitter API key secret, Access token, Access token secret` connected by a comma `,`. Eg. `TWITTER_TOKEN_RSSHub=bX1zry5nG4d1RbESQbnADpVIo,2YrD8qo9sXbB8VlYfVmo1Qtw0xsexnOliU5oZofq7aPIGou0Xx,123456789-hlkUHFYmeXrRcf6SEQciP8rP4lzmRgMgwdqIN9aK,pHcPnfa28rCIKhSICUCiaw9ppuSSl7T2f3dnGYpSM0bod`.
+    -   `TWITTER_CONSUMER_KEY`: Twitter Developer API key, support multiple keys, split them with `,`
+    -   `TWITTER_CONSUMER_SECRET`: Twitter Developer API key secret, support multiple keys, split them with `,`
+    -   `TWITTER_WEBAPI_AUTHORIZAION`: Twitter Web API authorization. If either of the above environment variables is not set, the Twitter Web API will be used. However, no need to set this environment var since every single user and guest share the same authorization token which has already been built into RSSHub.
+    -   `TWITTER_TOKEN_{handler}`: The token generated by the corresponding Twitter handler, replace `{handler}` with the Twitter handler, the value is a combination of `Twitter API key, Twitter API key secret, Access token, Access token secret` connected by a comma `,`. Eg. `TWITTER_TOKEN_RSSHub=bX1zry5nG4d1RbESQbnADpVIo,2YrD8qo9sXbB8VlYfVmo1Qtw0xsexnOliU5oZofq7aPIGou0Xx,123456789-hlkUHFYmeXrRcf6SEQciP8rP4lzmRgMgwdqIN9aK,pHcPnfa28rCIKhSICUCiaw9ppuSSl7T2f3dnGYpSM0bod`.
 
 -   Wordpress:
 
@@ -701,3 +773,7 @@ See docs of the specified route and `lib/config.js` for detailed information.
         -   `YOUTUBE_CLIENT_ID`: YouTube API OAuth 2.0 client ID
         -   `YOUTUBE_CLIENT_SECRET`: YouTube API OAuth 2.0 client secret
         -   `YOUTUBE_REFRESH_TOKEN`: YouTube API OAuth 2.0 refresh token. Check [this gist](https://gist.github.com/Kurukshetran/5904e8cb2361623498481f4a9a1338aa) for detailed instructions.
+
+-   ZodGame:
+
+    -   `ZODGAME_COOKIE`: Cookie of ZodGame User
