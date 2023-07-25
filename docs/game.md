@@ -40,6 +40,12 @@ pageClass: routes
 
 <Route author="bestpika" example="/4gamers/topic/gentlemen-topic" path="/4gamers/topic/:topic" :paramsDesc="['主题, 可在首页上方页面内找到']" />
 
+## 5EPLAY
+
+### 新闻列表
+
+<Route author="Dlouxgit" example="/5eplay/article" path="/5eplay/article"/>
+
 ## a9vgNews 游戏新闻
 
 ### a9vgNews 游戏新闻
@@ -96,6 +102,12 @@ pageClass: routes
 ### 分类
 
 <Route author="LogicJake" example="/dekudeals/most-wanted" path="/dekudeals/:type" :paramsDesc="['分类名称，可在 URL 中查看']"/>
+
+## Dorohedoro
+
+### News
+
+<Route author="nczitzk" example="/dorohedoro/news" path="/dorohedoro/news" />
 
 ## Epic Games Store
 
