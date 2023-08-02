@@ -144,6 +144,22 @@ pageClass: routes
 
 </Route>
 
+## 4k 世界
+
+### 分类
+
+<Route author="nczitzk" example="/4ksj/forum" path="/4ksj/forum/:id?" :paramsDesc="['分类 id，默认为最新4K电影']">
+
+::: tip 提示
+
+若订阅 [最新 4K 电影](https://www.4ksj.com/forum-2-1.html)，网址为 <https://www.4ksj.com/forum-2-1.html>。截取 `https://www.4ksj.com/forum-` 到末尾 `.html` 的部分 `2-1` 作为参数，此时路由为 [`/4ksj/forum/2-1`](https://rsshub.app/4ksj/forum/2-1)。
+
+若订阅子分类 [Dolby Vision 纪录片 4K 电影](https://www.4ksj.com/forum-4kdianying-s7-dianyingbiaozhun-3-dytypes-9-1.html)，网址为 <https://www.4ksj.com/forum-4kdianying-s7-dianyingbiaozhun-3-dytypes-9-1.html>。截取 `https://www.4ksj.com/forum-` 到末尾 `.html` 的部分 `4kdianying-s7-dianyingbiaozhun-3-dytypes-9-1` 作为参数，此时路由为 [`/4ksj/forum/4kdianying-s7-dianyingbiaozhun-3-dytypes-9-1`](https://rsshub.app/4ksj/forum/4kdianying-s7-dianyingbiaozhun-3-dytypes-9-1)。
+
+:::
+
+</Route>
+
 ## 60-Second Science - Scientific American
 
 <Route author="emdoe" example="/60s-science" path="/60s-science"/>
@@ -742,11 +758,19 @@ JavDB 有多个备用域名，本路由默认使用永久域名 <https://javdb.c
 
 ### 搜索
 
-<Route author="nczitzk" example="/javdb/search/巨乳" path="/javdb/search/:keyword?/:filter?" :paramsDesc="['关键字，默认为空', '过滤，见下表，默认为 `可播放`']" anticrawler="1">
+<Route author="nczitzk" example="/javdb/search/巨乳" path="/javdb/search/:keyword?/:filter?/:sort?" :paramsDesc="['关键字，默认为空', '过滤，见下表，默认为 `可播放`', '排序，见下表，默认为 `按相关度排序`']" anticrawler="1">
 
-| 全部 | 可播放   | 單體作品 | 演員  | 片商  | 導演     | 系列   | 番號 | 可下載   | 字幕  | 預覽圖  |
-| ---- | -------- | -------- | ----- | ----- | -------- | ------ | ---- | -------- | ----- | ------- |
-|      | playable | single   | actor | maker | director | series | code | download | cnsub | preview |
+过滤
+
+| 全部 | 占位 | 可播放   | 單體作品 | 演員  | 片商  | 導演     | 系列   | 番號 | 可下載   | 字幕  | 預覽圖  |
+| ---- | ---- | -------- | -------- | ----- | ----- | -------- | ------ | ---- | -------- | ----- | ------- |
+|      | none | playable | single   | actor | maker | director | series | code | download | cnsub | preview |
+
+排序
+
+| 按相关度排序 | 按发布时间排序 |
+| ------------ | -------------- |
+| 0            | 1              |
 
 </Route>
 
@@ -783,6 +807,24 @@ JavDB 有多个备用域名，本路由默认使用永久域名 <https://javdb.c
 |      | playable | single   | download | cnsub | preview |
 
 所有片商编号参见 [片商庫](https://javdb.com/makers)
+
+</Route>
+
+### 清单
+
+<Route author="dddepg" example="/javdb/lists/2GPgB" path="/lists/:id/:filter?/:sort?" :paramsDesc="['编号，可在清单页 URL 中找到', '过滤，见下表，默认为 `全部`，需要占位时可设置为 `none`', '排序，见下表，默认为 `加入时间排序`']" anticrawler="1">
+
+过滤
+
+| 全部 | 占位 | 可播放   | 單體作品 | 含磁链   | 含字幕 | 預覽圖  |
+| ---- | ---- | -------- | -------- | -------- | ------ | ------- |
+|      | none | playable | single   | download | cnsub  | preview |
+
+排序
+
+| 加入时间排序 | 发布时间排序 |
+| ------------ | ------------ |
+| 0            | 1            |
 
 </Route>
 

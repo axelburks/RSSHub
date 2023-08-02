@@ -308,7 +308,7 @@ GitHub 官方也提供了一些 RSS:
 
 ### Issue / Pull Request 评论
 
-<Route author="TonyRL" example="/github/comments/DIYgod/RSSHub/8116" path="/github/comments/:user/:repo/:number" :paramsDesc="['用户名', '仓库名', 'Issue 或 pull 编号']" radar="1" rssbud="1"/>
+<Route author="TonyRL FliegendeWurst" example="/github/comments/DIYgod/RSSHub/8116" path="/github/comments/:user/:repo/:number?" :paramsDesc="['用户名', '仓库名', 'Issue 或 pull 编号']" radar="1" rssbud="1"/>
 
 ### Wiki 历史
 
@@ -406,6 +406,22 @@ GitHub 官方也提供了一些 RSS:
 
 <Route author="cf020031308 nczitzk xie-dongping" example="/hackernews/threads/comments_list/dang" path="/hackernews/:section?/:type?/:user?" :paramsDesc="['内容分区，见上表，默认为 `index`', '链接类型，见上表，默认为 `sources`', '设定用户，只在 `threads` 和 `submitted` 分区有效']" />
 
+## Hacking8
+
+### 信息流
+
+<Route author="nczitzk" example="/hacking8" path="/hacking8/:category?" :paramsDesc="['分类，见下表，默认为最近更新']">
+
+| 推荐  | 最近更新 | 漏洞 / PoC 监控 | PDF |
+| ----- | -------- | --------------- | --- |
+| likes | index    | vul-poc         | pdf |
+
+</Route>
+
+### 搜索
+
+<Route author="nczitzk" example="/hacking8/search/+node%3Ahackernews.cc" path="/hacking8/search/:keyword?" :paramsDesc="['关键字，默认为空']"/>
+
 ## HackMD
 
 ### Profile
@@ -472,6 +488,12 @@ GitHub 官方也提供了一些 RSS:
 ### Hex-Rays News
 
 <Route author="hellodword" example="/hex-rays/news" path="/hex-rays/news"/>
+
+## Huggingface
+
+### Daily Papers
+
+<Route author="zeyugao" example="/huggingface/daily-papers" path="/huggingface/daily-papers" />
 
 ## Issue Hunt
 
@@ -723,6 +745,12 @@ GitHub 官方也提供了一些 RSS:
 ### Scala Blog
 
 <Route author="fengkx" example="/scala/blog/posts" path="/scala/blog/:part?" :paramsDesc="['部分，默认为 All，part 参数可在 url 中获得']" />
+
+## SecWiki - 安全维基
+
+### 最新周刊
+
+<Route author="p7e4" example="/sec-wiki/weekly" path="/sec-wiki/weekly" />
 
 ## segmentfault
 
