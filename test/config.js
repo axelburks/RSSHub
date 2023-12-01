@@ -17,20 +17,6 @@ describe('config', () => {
         delete process.env.BILIBILI_COOKIE_34;
     });
 
-    it('twitter token', () => {
-        process.env.TWITTER_TOKEN_12 = 'token1';
-        process.env.TWITTER_TOKEN_34 = 'token2';
-
-        const config = require('../lib/config').value;
-        expect(config.twitter.tokens).toMatchObject({
-            12: 'token1',
-            34: 'token2',
-        });
-
-        delete process.env.TWITTER_TOKEN_12;
-        delete process.env.TWITTER_TOKEN_34;
-    });
-
     it('email config', () => {
         process.env['EMAIL_CONFIG_xx.qq.com'] = 'token1';
         process.env['EMAIL_CONFIG_oo.qq.com'] = 'token2';
@@ -71,6 +57,20 @@ describe('config', () => {
 
         delete process.env.MEDIUM_COOKIE_12;
         delete process.env.MEDIUM_COOKIE_34;
+    });
+
+    it('discourse config', () => {
+        process.env.DISCOURSE_CONFIG_12 = JSON.stringify({ a: 1 });
+        process.env.DISCOURSE_CONFIG_34 = JSON.stringify({ b: 2 });
+
+        const config = require('../lib/config').value;
+        expect(config.discourse.config).toMatchObject({
+            12: { a: 1 },
+            34: { b: 2 },
+        });
+
+        delete process.env.DISCOURSE_CONFIG_12;
+        delete process.env.DISCOURSE_CONFIG_34;
     });
 
     it('no random ua', () => {
