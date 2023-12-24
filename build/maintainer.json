@@ -1401,6 +1401,9 @@
     "/consumer/:category?/:language?/:keyword?": [
         "nczitzk"
     ],
+    "/consumer/shopping-guide/:category?/:language?": [
+        "TonyRL"
+    ],
     "/cool18/:id?/:type?/:keyword?": [
         "nczitzk"
     ],
@@ -2687,6 +2690,9 @@
     "/gov/hunan/notice/:type": [],
     "/gov/immiau/news": [
         "liu233w"
+    ],
+    "/gov/jgjcndrc/:id?": [
+        "nczitzk"
     ],
     "/gov/jinan/healthcommission/medical_exam_notice": [
         "tzjyxb"
@@ -5131,6 +5137,9 @@
         "Fatpandac"
     ],
     "/pjsk/news": [],
+    "/pkmer/recent": [
+        "Gnoyong"
+    ],
     "/pku/admission/sszs": [
         "pkuyjs"
     ],
