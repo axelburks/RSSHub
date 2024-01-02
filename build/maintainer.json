@@ -582,6 +582,9 @@
         "TonyRL"
     ],
     "/babykingdom/:id/:order?": [],
+    "/backlinko/blog": [
+        "TonyRL"
+    ],
     "/bad/:path+": [
         "nczitzk"
     ],
@@ -5015,6 +5018,15 @@
     ],
     "/osu/packs/:type?": [
         "JimenezLi"
+    ],
+    "/otobanana/user/:id": [
+        "TonyRL"
+    ],
+    "/otobanana/user/:id/cast": [
+        "TonyRL"
+    ],
+    "/otobanana/user/:id/livestream": [
+        "TonyRL"
     ],
     "/ouc/it/:type?": [
         "GeoffreyChen777",
