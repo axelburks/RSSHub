@@ -2295,6 +2295,9 @@
         "HenryQW",
         "xyqfer"
     ],
+    "/ft/myft/:key": [
+        "HenryQW"
+    ],
     "/fudan/cce": [],
     "/fuliba/latest": [
         "shinemoon"
@@ -7325,6 +7328,9 @@
     ],
     "/yicai/brief": [
         "sanmmm",
+        "nczitzk"
+    ],
+    "/yicai/dt/:column?/:category?": [
         "nczitzk"
     ],
     "/yicai/feed/:id?": [
