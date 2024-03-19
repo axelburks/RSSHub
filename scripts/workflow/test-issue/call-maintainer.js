@@ -8,8 +8,8 @@ const maintainerURL = 'https://raw.githubusercontent.com/DIYgod/RSSHub/gh-pages/
 const successTag = 'Bug Ping: Pinged';
 const parseFailTag = 'Bug Ping: Parsing Failed';
 const failTag = 'Bug Ping: Not Found';
-const v1route = 'Route: v1';
-const v2route = 'Route: v2';
+const deprecatedRoute = 'Route: deprecated';
+const route = 'Route';
 
 // DnD (do-not-disturb) usernames, add yours here to avoid being notified
 const dndUsernames = new Set([]);
@@ -31,7 +31,7 @@ async function parseBodyRoutes(body, core) {
     }
 
     if (routes) {
-        routes = routes.split(/\r?\n/).filter((n) => n);
+        routes = routes.split(/\r?\n/).filter(Boolean);
         const dedup = [...new Set(routes)];
         if (dedup.length !== routes.length) {
             core.warning('Duplication detected.');
@@ -40,7 +40,7 @@ async function parseBodyRoutes(body, core) {
         return dedup;
     }
 
-    throw Error('unable to parse the issue body: route does not exist');
+    throw new Error('unable to parse the issue body: route does not exist');
 }
 
 async function getMaintainersByRoutes(routes, core) {
@@ -73,8 +73,8 @@ module.exports = async ({ github, context, core }) => {
                 ...issue_facts,
                 labels,
             })
-            .catch((e) => {
-                core.warning(e);
+            .catch((error) => {
+                core.warning(error);
             });
     const updateIssueState = (state) =>
         github.rest.issues
@@ -82,16 +82,16 @@ module.exports = async ({ github, context, core }) => {
                 ...issue_facts,
                 state,
             })
-            .catch((e) => {
-                core.warning(e);
+            .catch((error) => {
+                core.warning(error);
             });
 
     if (context.payload.issue.state === 'closed') {
         await updateIssueState('open');
     }
 
-    const routes = await parseBodyRoutes(body, core).catch((e) => {
-        core.warning(e);
+    const routes = await parseBodyRoutes(body, core).catch((error) => {
+        core.warning(error);
     });
 
     if (routes === null) {
@@ -110,8 +110,7 @@ module.exports = async ({ github, context, core }) => {
     let failedCount = 0;
     let comments = '##### Searching for maintainers: \n\n';
 
-    for (let i = 0; i < routes.length; i++) {
-        const route = routes[i];
+    for (const [i, route] of routes.entries()) {
         const main = maintainers[i];
         if (main === undefined) {
             comments += `- \`${route}\`: **Route not found**\n`;
@@ -148,11 +147,11 @@ module.exports = async ({ github, context, core }) => {
     }
 
     if (emptyCount > 0) {
-        labels.push(v1route);
+        labels.push(deprecatedRoute);
     }
 
     if (successCount > 0) {
-        labels.push(v2route);
+        labels.push(route);
     }
 
     // Write labels (status, affected route count)
@@ -171,8 +170,8 @@ module.exports = async ({ github, context, core }) => {
 If all routes can not be found, the issue will be closed automatically. Please use \`NOROUTE\` for a route-irrelevant issue or leave a comment if it is a mistake.
 `,
         })
-        .catch((e) => {
-            core.warning(e);
+        .catch((error) => {
+            core.warning(error);
         });
 
     if (failedCount && emptyCount === 0 && successCount === 0) {

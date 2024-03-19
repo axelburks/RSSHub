@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+  workflow_run:
+    workflows: ['Build assets']
+    types:
+      - completed
 
 permissions:
   contents: read
@@ -18,7 +22,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         with:
           version: 8
       - uses: actions/setup-node@v4
@@ -26,8 +30,6 @@ jobs:
           node-version: lts/*
           cache: 'pnpm'
       - run: pnpm i
-      - run: pnpm i
-        working-directory: website
       - run: npm run format
       - name: Commit files
         run: |
