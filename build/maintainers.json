@@ -148,7 +148,7 @@
   "/4gamers/topic/:topic": [
     "bestpika"
   ],
-  "/4ksj/forum/:id?": [
+  "/4ksj/:id?": [
     "nczitzk"
   ],
   "/500px/tribe/set/:id": [
@@ -3108,6 +3108,9 @@
     "nczitzk"
   ],
   "/kantarworldpanel/:region?/:category{.+}?": [],
+  "/kaopu/news/:language?": [
+    "fashioncj"
+  ],
   "/kbs/news/:category?/:language?": [
     "nczitzk"
   ],
@@ -4034,6 +4037,9 @@
   ],
   "/otobanana/user/:id": [
     "TonyRL"
+  ],
+  "/ouc/hqsz": [
+    "ladeng07"
   ],
   "/ouc/it/postgraduate": [
     "shengmaosu"
@@ -5448,10 +5454,7 @@
   "/twitch/video/:login/:filter?": [
     "hoilc"
   ],
-  "/twitter/collection/:uid/:collectionId/:routeParams?": [
-    "TonyRL"
-  ],
-  "/twitter/followings/:id/:routeParams?": [
+  "/twitter/home/:routeParams?": [
     "DIYgod"
   ],
   "/twitter/keyword/:keyword/:routeParams?": [
@@ -5462,10 +5465,12 @@
   "/twitter/likes/:id/:routeParams?": [
     "xyqfer"
   ],
-  "/twitter/list/:id/:name/:routeParams?": [
+  "/twitter/list/:id/:routeParams?": [
+    "DIYgod",
     "xyqfer"
   ],
   "/twitter/media/:id/:routeParams?": [
+    "DIYgod",
     "yindaheng98",
     "Rongronggg9"
   ],
@@ -6341,6 +6346,9 @@
   ],
   "/zju/physics/:type": [
     "Caicailiushui"
+  ],
+  "/zjut/da/:type": [
+    "yikZero"
   ],
   "/zjuvag/blog": [
     "KaiyoungYu"

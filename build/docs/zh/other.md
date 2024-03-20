@@ -292,12 +292,6 @@
 
 <Route namespace="hkjunkcall" :data='{"path":"/","radar":[{"source":["hkjunkcall.com/"],"target":""}],"name":"Unknown","maintainers":["nczitzk"],"url":"hkjunkcall.com/","location":"index.ts"}' />
 
-## Howtoforge Linux Tutorials <Site url="howtoforge.com"/>
-
-### Unknown <Site url="howtoforge.com/" size="sm" />
-
-<Route namespace="howtoforge" :data='{"path":"/","radar":[{"source":["howtoforge.com/"],"target":""}],"name":"Unknown","maintainers":["cnkmmk"],"url":"howtoforge.com/","location":"rss.ts"}' />
-
 ## iDaily <Site url="idai.ly"/>
 
 ### Unknown <Site url="idai.ly" size="sm" />
@@ -958,12 +952,6 @@ Refer to [the list of supported currencies](https://wise.com/tools/exchange-rate
 
 <Route namespace="cbnweek" :data='{"path":"/","radar":[{"source":["cbnweek.com/"],"target":""}],"name":"Unknown","maintainers":["nczitzk"],"url":"cbnweek.com/","location":"index.ts"}' />
 
-## 电脑玩物 <Site url="playpcesor.com"/>
-
-### Unknown <Site url="playpcesor.com/" size="sm" />
-
-<Route namespace="playpcesor" :data='{"path":"/","radar":[{"source":["playpcesor.com/"],"target":""}],"name":"Unknown","maintainers":["cnkmmk"],"url":"playpcesor.com/","location":"rss.ts"}' />
-
 ## 东莞教研网 <Site url="dgjyw.com"/>
 
 ### Unknown <Site url="dgjyw.com" size="sm" />
@@ -1043,12 +1031,6 @@ Refer to [the list of supported currencies](https://wise.com/tools/exchange-rate
 ### Unknown <Site url="cmdp.ncc-cma.net" size="sm" />
 
 <Route namespace="ncc-cma" :data='{"path":"/cmdp/image/:id{.+}?","name":"Unknown","maintainers":[],"location":"cmdp.ts"}' />
-
-## 国外主机测评 <Site url="zhujiceping.com"/>
-
-### Unknown <Site url="zhujiceping.com/" size="sm" />
-
-<Route namespace="zhujiceping" :data='{"path":"/","radar":[{"source":["zhujiceping.com/"],"target":""}],"name":"Unknown","maintainers":["cnkmmk"],"url":"zhujiceping.com/","location":"rss.ts"}' />
 
 ## 环球法律评论 <Site url="globallawreview.org"/>
 
