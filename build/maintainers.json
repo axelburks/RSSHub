@@ -118,6 +118,9 @@
   "/1point3acres/user/:id/threads": [
     "Maecenas"
   ],
+  "/2023game/:category?/:tab?": [
+    "xzzpig"
+  ],
   "/2cycd/:fid/:sort?": [
     "shelken"
   ],
@@ -1488,6 +1491,10 @@
   "/dorohedoro/news": [
     "nczitzk"
   ],
+  "/douban/book/latest/:type?": [
+    "fengkx",
+    "lyqluis"
+  ],
   "/douban/book/rank/:type?": [
     "xyqfer",
     "queensferryme"
@@ -1532,9 +1539,6 @@
   ],
   "/douban/movie/later": [
     "DIYgod"
-  ],
-  "/douban/book/latest": [
-    "fengkx"
   ],
   "/douban/music/latest/:area?": [
     "fengkx",
@@ -2850,6 +2854,11 @@
   ],
   "/informs/:category?": [
     "Fatpandac"
+  ],
+  "/infzm/:id": [
+    "KarasuShin",
+    "ranpox",
+    "xyqfer"
   ],
   "/inoreader/html_clip/:user/:tag": [],
   "/inoreader/rss/:user/:tag": [
@@ -4279,7 +4288,7 @@
   "/postman/release-notes": [
     "nczitzk"
   ],
-  "/priconne-redive/news/:location?": [
+  "/priconne-redive/news/:server?": [
     "SayaSS",
     "frankcwl"
   ],
