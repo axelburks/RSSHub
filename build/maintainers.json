@@ -127,16 +127,19 @@
   "/36kr/hot-list/:category?": [
     "nczitzk"
   ],
-  "/36kr/{.*}?": [
-    "nczitzk"
+  "/36kr/:category/:subCategory?/:keyword?": [
+    "nczitzk",
+    "fashioncj"
   ],
-  "/3dmgame/:name/:type?": [
+  "/3dmgame/games/:name/:type?": [
     "sinchang",
     "jacky2001114",
-    "HenryQW"
+    "HenryQW",
+    "lyqluis"
   ],
   "/3dmgame/news/:category?": [
-    "zhboner"
+    "zhboner",
+    "lyqluis"
   ],
   "/423down/:category/:type?": [],
   "/4gamers/": [
@@ -255,6 +258,12 @@
   ],
   "/aeon/:type": [
     "emdoe"
+  ],
+  "/afdian/dynamic/:uid?": [
+    "sanmmm"
+  ],
+  "/afdian/explore/:type/:category?": [
+    "sanmmm"
   ],
   "/agefans/detail/:id": [
     "s2marine"
@@ -2874,6 +2883,9 @@
   "/instructables/projects/:category?": [
     "wolfg1969"
   ],
+  "/ippa/": [
+    "cnkmmk"
+  ],
   "/ipsw/index/:ptype/:pname": [
     "Jeason0228"
   ],
@@ -3245,6 +3257,9 @@
   "/linovelib/novel/:id": [
     "misakicoca"
   ],
+  "/linovelib/volume/:id": [
+    "rkscv"
+  ],
   "/liquipedia/counterstrike/matches/:team": [
     "CookiePieWw"
   ],
@@ -3296,6 +3311,10 @@
   ],
   "/loltw/news/:category?": [
     "hoilc"
+  ],
+  "/loongarch/post/:type?": [
+    "ladeng07",
+    "3401797899"
   ],
   "/lovelive-anime/news/:option?": [
     "axojhf"
@@ -6077,6 +6096,9 @@
   "/yangtzeu/dongke/*": [],
   "/ycwb/:node": [
     "TimWu007"
+  ],
+  "/ygkkk/": [
+    "cnkmmk"
   ],
   "/yicai/author/:id?": [
     "nczitzk"
