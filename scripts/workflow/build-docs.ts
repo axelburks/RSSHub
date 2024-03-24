@@ -2,9 +2,9 @@ import { namespaces } from '../../lib/registry';
 import fs from 'node:fs';
 import * as path from 'node:path';
 import { categories } from './data';
-import fullTests from '../../assets/build/test-full-routes.json';
 import { getCurrentPath } from '../../lib/utils/helpers';
 
+const fullTests = await (await fetch('https://raw.githubusercontent.com/DIYgod/RSSHub/gh-pages/build/test-full-routes.json')).json();
 const testResult = fullTests.testResults[0].assertionResults;
 
 const __dirname = getCurrentPath(import.meta.url);
@@ -106,7 +106,7 @@ function generateMd(lang) {
                       }
                     : undefined;
                 md[category] += `### ${data.name} ${data.url || docs[category][namespace].url ? `<Site url="${data.url || docs[category][namespace].url}" size="sm" />` : ''}\n\n`;
-                md[category] += `<Route namespace="${namespace}" :data='${JSON.stringify(data).replaceAll(`'`, '&#39;')}' :test='${JSON.stringify(parsedTest)}' />\n\n`;
+                md[category] += `<Route namespace="${namespace}" :data='${JSON.stringify(data).replaceAll(`'`, '&#39;')}' :test='${JSON.stringify(parsedTest)?.replaceAll(`'`, '&#39;')}' />\n\n`;
                 if (data.description) {
                     md[category] += `${data.description}\n\n`;
                 }
