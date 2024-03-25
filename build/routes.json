@@ -1095,6 +1095,53 @@
     "name": "一亩三分地",
     "url": "blog.1point3acres.com"
   },
+  "1x": {
+    "routes": {
+      "/:category{.+}?": {
+        "path": "/:category{.+}?",
+        "name": "Gallery",
+        "url": "1x.com",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "example": "/1x/latest/awarded",
+        "parameters": {
+          "category": "Category, Latest Awarded by default"
+        },
+        "description": "::: tip\nFill in the field in the path with the part of the corresponding page URL after `https://1x.com/gallery/` or `https://1x.com/photo/`. Here are the examples:\n\nIf you subscribe to [Abstract Awarded](https://1x.com/gallery/abstract/awarded), you should fill in the path with the part `abstract/awarded` from the page URL `https://1x.com/gallery/abstract/awarded`. In this case, the route will be [`/1x/abstract/awarded`](https://rsshub.app/1x/abstract/awarded).\n    \nIf you subscribe to [Wildlife Published](https://1x.com/gallery/wildlife/published), you should fill in the path with the part `wildlife/published` from the page URL `https://1x.com/gallery/wildlife/published`. In this case, the route will be [`/1x/wildlife/published`](https://rsshub.app/1x/wildlife/published).\n:::",
+        "categories": [
+          "design",
+          "picture"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "/gallery/:category*",
+              "/photos/:category*"
+            ],
+            "target": "/1x/:category"
+          }
+        ],
+        "location": "index.ts"
+      }
+    },
+    "name": "1x.com",
+    "url": "1x.com",
+    "categories": [
+      "design",
+      "picture"
+    ],
+    "description": "1x.com • In Pursuit of the Sublime. Browse 200,000 curated photos from photographers all over the world."
+  },
   "2023game": {
     "routes": {
       "/:category?/:tab?": {
@@ -4001,6 +4048,25 @@
     "name": "App Store/Mac App Store",
     "url": "apps.apple.com"
   },
+  "appstorrent": {
+    "routes": {
+      "/programs": {
+        "path": "/programs",
+        "categories": [
+          "program-update"
+        ],
+        "example": "/appstorrent/programs",
+        "name": "Programs",
+        "maintainers": [
+          "xzzpig"
+        ],
+        "url": "appstorrent.ru/programs/",
+        "location": "programs.ts"
+      }
+    },
+    "name": "AppsTorrent",
+    "url": "appstorrent.ru"
+  },
   "aqara": {
     "routes": {
       "/community/:id?/:keyword?": {
@@ -6493,7 +6559,7 @@
         "parameters": {
           "uid": "用户 id, 可在 UP 主主页中找到",
           "sid": "合集 id, 可在合集页面的 URL 中找到",
-          "disableEmbed": "默认为开启内嵌视频, 任意值为关闭",
+          "disableEmbed": "空,0与false为开启内嵌视频, 其他任意值为关闭",
           "sortReverse": "默认:默认排序 1:升序排序",
           "page": "页码, 默认1"
         },
@@ -7428,6 +7494,31 @@
     "name": "Blizzard",
     "url": "news.blizzard.com"
   },
+  "blogread": {
+    "routes": {
+      "/newest": {
+        "path": "/newest",
+        "categories": [
+          "programming"
+        ],
+        "example": "/blogread/newest",
+        "radar": [
+          {
+            "source": [
+              "blogread.cn/news/newest.php"
+            ]
+          }
+        ],
+        "name": "最新文章",
+        "maintainers": [
+          "fashioncj"
+        ],
+        "location": "index.ts"
+      }
+    },
+    "name": "技术头条",
+    "url": "blogread.cn"
+  },
   "bloomberg": {
     "routes": {
       "/authors/:id/:slug/:source?": {
@@ -7771,11 +7862,13 @@
           "supportPodcast": false,
           "supportScihub": false
         },
-        "radar": {
-          "source": [
-            "mmda.booru.org/index.php"
-          ]
-        },
+        "radar": [
+          {
+            "source": [
+              "mmda.booru.org/index.php"
+            ]
+          }
+        ],
         "name": "MMDArchive 标签查询",
         "maintainers": [
           "N78Wy"
@@ -13532,6 +13625,32 @@
     },
     "name": "大眼仔旭",
     "url": "dayanzai.me"
+  },
+  "dbaplus": {
+    "routes": {
+      "/": {
+        "path": "/",
+        "categories": [
+          "programming"
+        ],
+        "example": "/dbaplus",
+        "radar": [
+          {
+            "source": [
+              "dbaplus.cn/"
+            ]
+          }
+        ],
+        "name": "最新文章",
+        "maintainers": [
+          "cnkmmk"
+        ],
+        "url": "dbaplus.cn/",
+        "location": "rss.ts"
+      }
+    },
+    "name": "dbaplus社群",
+    "url": "dbaplus.cn"
   },
   "dblp": {
     "routes": {
@@ -34509,23 +34628,25 @@
           "supportPodcast": false,
           "supportScihub": false
         },
-        "radar": {
-          "source": [
-            "modrinth.com/mod/:id/*",
-            "modrinth.com/plugin/:id/*",
-            "modrinth.com/datapack/:id/*",
-            "modrinth.com/shader/:id/*",
-            "modrinth.com/resourcepack/:id/*",
-            "modrinth.com/modpack/:id/*",
-            "modrinth.com/mod/:id",
-            "modrinth.com/plugin/:id",
-            "modrinth.com/datapack/:id",
-            "modrinth.com/shader/:id",
-            "modrinth.com/resourcepack/:id",
-            "modrinth.com/modpack/:id"
-          ],
-          "target": "/project/:id/versions"
-        },
+        "radar": [
+          {
+            "source": [
+              "modrinth.com/mod/:id/*",
+              "modrinth.com/plugin/:id/*",
+              "modrinth.com/datapack/:id/*",
+              "modrinth.com/shader/:id/*",
+              "modrinth.com/resourcepack/:id/*",
+              "modrinth.com/modpack/:id/*",
+              "modrinth.com/mod/:id",
+              "modrinth.com/plugin/:id",
+              "modrinth.com/datapack/:id",
+              "modrinth.com/shader/:id",
+              "modrinth.com/resourcepack/:id",
+              "modrinth.com/modpack/:id"
+            ],
+            "target": "/project/:id/versions"
+          }
+        ],
         "name": "Project versions",
         "maintainers": [
           "SettingDust"
@@ -60931,7 +61052,12 @@
           "embed": "Default to embed the video, set to any value to disable embedding"
         },
         "features": {
-          "requireConfig": false,
+          "requireConfig": [
+            {
+              "name": "YOUTUBE_KEY",
+              "description": " YouTube API Key, support multiple keys, split them with `,`, [API Key application](https://console.developers.google.com/)"
+            }
+          ],
           "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,

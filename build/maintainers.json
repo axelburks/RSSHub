@@ -118,6 +118,9 @@
   "/1point3acres/user/:id/threads": [
     "Maecenas"
   ],
+  "/1x/:category{.+}?": [
+    "nczitzk"
+  ],
   "/2023game/:category?/:tab?": [
     "xzzpig"
   ],
@@ -409,6 +412,9 @@
   ],
   "/appstore/xianmian": [
     "Andiedie"
+  ],
+  "/appstorrent/programs": [
+    "xzzpig"
   ],
   "/aqara/community/:id?/:keyword?": [
     "nczitzk"
@@ -758,6 +764,9 @@
   ],
   "/blizzard/news/:language?/:category?": [
     "nczitzk"
+  ],
+  "/blogread/newest": [
+    "fashioncj"
   ],
   "/bloomberg/authors/:id/:slug/:source?": [
     "josh"
@@ -1347,6 +1356,9 @@
     "nczitzk"
   ],
   "/dayanzai/:category/:fulltext?": [],
+  "/dbaplus/": [
+    "cnkmmk"
+  ],
   "/dblp/:field": [
     "ytno1"
   ],
