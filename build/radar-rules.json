@@ -1585,7 +1585,7 @@
     ]
   },
   "bjfu.edu.cn": {
-    "_name": "北京师范大学",
+    "_name": "北京林业大学",
     "graduate": [
       {
         "title": "研究生院培养动态",
@@ -1764,6 +1764,16 @@
           "/:category/:type/index.html"
         ],
         "target": "/bnu/dwxgb/:category/:type"
+      }
+    ],
+    "jwb": [
+      {
+        "title": "教务部（研究生院）",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/"
+        ],
+        "target": "/bnu/jwb"
       }
     ],
     "www.lib": [
@@ -5827,9 +5837,9 @@
         "title": "果壳网专栏",
         "docs": "https://docs.rsshub.app/routes/new-media",
         "source": [
-          "/"
+          "/:channel"
         ],
-        "target": "/guokr/:channel"
+        "target": "/guokr/column/:channel"
       },
       {
         "title": "科学人",
@@ -9371,6 +9381,19 @@
           "/"
         ],
         "target": "/nowcoder/schedule"
+      }
+    ]
+  },
+  "ntdm9.com": {
+    "_name": "NT动漫",
+    ".": [
+      {
+        "title": "番剧详情",
+        "docs": "https://docs.rsshub.app/routes/anime",
+        "source": [
+          "/video/:id"
+        ],
+        "target": "/ntdm/video/:id"
       }
     ]
   },
@@ -13725,6 +13748,14 @@
     "_name": "報導者",
     ".": [
       {
+        "title": "分類",
+        "docs": "https://docs.rsshub.app/routes/new-media",
+        "source": [
+          "/:category"
+        ],
+        "target": "/twreporter/category/:category"
+      },
+      {
         "title": "最新",
         "docs": "https://docs.rsshub.app/routes/new-media",
         "source": [
@@ -15694,6 +15725,19 @@
           "/portfolio/:id"
         ],
         "target": "/zimuxia/portfolio/:id"
+      }
+    ]
+  },
+  "zjut.edu.cn": {
+    "_name": "浙江工业大学",
+    "www.news": [
+      {
+        "title": "浙工大新闻",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/:type/list.htm"
+        ],
+        "target": "/zjut/news/:type"
       }
     ]
   },
