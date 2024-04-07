@@ -4695,6 +4695,35 @@
     "name": "AtCoder",
     "url": "atcoder.jp"
   },
+  "atptour": {
+    "routes": {
+      "/news/:lang?": {
+        "path": "/news/:lang?",
+        "categories": [
+          "other"
+        ],
+        "example": "/atptour/news/en",
+        "parameters": {
+          "lang": "en or es."
+        },
+        "radar": [
+          {
+            "source": [
+              "atptour.com"
+            ]
+          }
+        ],
+        "name": "News",
+        "maintainers": [
+          "LM1207"
+        ],
+        "location": "news.ts"
+      }
+    },
+    "name": "ATP Tour",
+    "url": "www.atptour.com",
+    "description": "News from the official site of men's professional tennis."
+  },
   "auto-stats": {
     "routes": {
       "/:category?": {
@@ -6880,7 +6909,13 @@
           "tid": "分区 id"
         },
         "features": {
-          "requireConfig": false,
+          "requireConfig": [
+            {
+              "name": "BILIBILI_COOKIE_*",
+              "optional": true,
+              "description": "如果没有此配置，那么必须开启 puppeteer 支持；BILIBILI_COOKIE_{uid}: 用于用户关注动态系列路由，对应 uid 的 b 站用户登录后的 Cookie 值，`{uid}` 替换为 uid，如 `BILIBILI_COOKIE_2267573`，获取方式：\n1.  打开 [https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=8](https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=8)\n2.  打开控制台，切换到 Network 面板，刷新\n3.  点击 dynamic_new 请求，找到 Cookie\n4.  视频和专栏，UP 主粉丝及关注只要求 `SESSDATA` 字段，动态需复制整段 Cookie"
+            }
+          ],
           "requirePuppeteer": false,
           "antiCrawler": false,
           "supportBT": false,
@@ -6889,7 +6924,8 @@
         },
         "name": "视频搜索",
         "maintainers": [
-          "Symty"
+          "pcrtool",
+          "DIYgod"
         ],
         "description": "分区 id 的取值请参考下表：\n\n  | 全部分区 | 动画 | 番剧 | 国创 | 音乐 | 舞蹈 | 游戏 | 知识 | 科技 | 运动 | 汽车 | 生活 | 美食 | 动物圈 | 鬼畜 | 时尚 | 资讯 | 娱乐 | 影视 | 纪录片 | 电影 | 电视剧 |\n  | -------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ------ | ---- | ---- | ---- | ---- | ---- | ------ | ---- | ------ |\n  | 0        | 1    | 13   | 167  | 3    | 129  | 4    | 36   | 188  | 234  | 223  | 160  | 211  | 217    | 119  | 155  | 202  | 5    | 181  | 177    | 23   | 11     |",
         "location": "vsearch.ts"
@@ -7795,22 +7831,28 @@
         ],
         "location": "authors.ts"
       },
-      "/:site": {
-        "path": [
-          "/:site",
-          "/"
+      "/:site?": {
+        "path": "/:site?",
+        "categories": [
+          "finance"
         ],
-        "name": "Unknown",
-        "maintainers": [],
-        "location": "index.ts"
-      },
-      "/": {
-        "path": [
-          "/:site",
-          "/"
+        "example": "/bloomberg/bbiz",
+        "parameters": {
+          "site": "Site ID, can be found below"
+        },
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "name": "Bloomberg Site",
+        "maintainers": [
+          "bigfei"
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "description": "\n    | Site ID      | Title        |\n    | ------------ | ------------ |\n    | /            | News         |\n    | bpol         | Politics     |\n    | bbiz         | Business     |\n    | markets      | Markets      |\n    | technology   | Technology   |\n    | green        | Green        |\n    | wealth       | Wealth       |\n    | pursuits     | Pursuits     |\n    | bview        | Opinion      |\n    | equality     | Equality     |\n    | businessweek | Businessweek |\n    | citylab      | CityLab      |\n    ",
         "location": "index.ts"
       }
     },
@@ -60055,6 +60097,46 @@
     },
     "name": "盒心光环",
     "url": "xboxfan.com"
+  },
+  "xianbao": {
+    "routes": {
+      "/:category?": {
+        "path": "/:category?",
+        "name": "线板酷",
+        "url": "new.xianbao.fun",
+        "maintainers": [
+          "nashi23"
+        ],
+        "example": "/xianbao",
+        "parameters": {
+          "category": "类别id，默认为：latest"
+        },
+        "description": "\n| 分类         | id             |\n| ------------ | -------------- |\n| 最新         | latest         |\n| 赚客吧       | zuankeba       |\n| 赚客吧热帖   | zuankeba-hot   |\n| 新赚吧       | xinzuanba      |\n| 新赚吧热帖   | xinzuanba-hot  |\n| 微博         | weibo          |\n| 微博热帖     | weibo-hot      |\n| 豆瓣线报     | douban         |\n| 豆瓣热帖     | douban-hot     |\n| 酷安         | kuan           |\n| 小嘀咕       | xiaodigu       |\n| 葫芦侠       | huluxia        |\n| 小刀娱乐网   | xiadao         |\n| 技术 QQ 网   | qqjishu        |\n| YYOK 大全    | yyok           |\n| 活动资讯网   | huodong        |\n| 免费赚钱中心 | maifei         |\n| 一小时       | yixiaoshi      |\n| 三小时       | sanxiaoshi     |\n| 六小时       | liuxiaoshi     |\n| 十二小时     | shierxiaoshi   |\n| 二十四小时   | ershisixiaoshi |\n| 四十八小时   | sishibaxiaoshi |\n| 今天         | jintian        |\n| 昨天         | zuotian        |\n| 前天         | qiantian       |\n| 三天         | santian        |\n| 五天         | wutian         |\n| 七天         | qitian         |\n| 十五天       | shiwutian      |",
+        "categories": [
+          "shopping"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "source": [
+              "new.xianbao.fun"
+            ],
+            "target": "/"
+          }
+        ],
+        "location": "index.ts"
+      }
+    },
+    "name": "线报酷",
+    "url": "new.xianbao.fun"
   },
   "xiaoheihe": {
     "routes": {
