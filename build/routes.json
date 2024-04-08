@@ -22779,6 +22779,10 @@
       },
       "/moa/:suburl{.+}": {
         "path": "/moa/:suburl{.+}",
+        "categories": [
+          "government"
+        ],
+        "example": "/gov/moa/gk/zcjd/",
         "radar": [
           {
             "source": [
@@ -22787,9 +22791,16 @@
             "target": "/moa/:suburl"
           }
         ],
-        "name": "Unknown",
-        "maintainers": [],
+        "parameters": {
+          "suburl": "下级目录，请使用最下级的目录"
+        },
+        "name": "中华人民共和国农业农村部 - 新闻",
+        "maintainers": [
+          "Origami404",
+          "lyqluis"
+        ],
         "url": "moa.gov.cn/",
+        "description": "更多例子：\n  -   `农业农村部动态`的网页链接是`http://www.moa.gov.cn/xw/zwdt/`, 对应的`suburl`是`xw/zwdt`\n  -   `财务公开`的网页链接是`http://www.moa.gov.cn/gk/cwgk_1/`, 对应的`suburl`是`gk/cwgk_1`\n  -   像[政策法规](http://www.moa.gov.cn/gk/zcfg/)这种页面(`http://www.moa.gov.cn/gk/zcfg/`), 它**不是**一个合法的分类目录，它是`法律`, `行政法规`, `部门规章`等一堆栏目的集合，这时候请点开对应栏目的`更多 >>`进入栏目的最下级目录，再根据上面的规则提取`suburl`\n  -   特别地，`图片新闻`对应的`suburl`为`xw/tpxw/`, `最新公开`对应的`suburl`为`govpublic`, `数据>最新发布`对应的`suburl`为`sj/zxfb`",
         "location": "moa/moa.ts"
       },
       "/moa/sjzxfb/:category{.+}?": {
@@ -63987,6 +63998,72 @@
     },
     "name": "知园",
     "url": "zhiy.cc"
+  },
+  "zhonglun": {
+    "routes": {
+      "/research/article/:language{[a-zA-Z0-9-]+}?": {
+        "path": "/research/article/:language{[a-zA-Z0-9-]+}?",
+        "name": "中伦研究专业文章",
+        "url": "zhonglun.com",
+        "maintainers": [
+          "nczitzk"
+        ],
+        "example": "/zhonglun/research/article/zh",
+        "parameters": {
+          "category": "语言，默认为 zh，即简体中文，可在对应分类页 URL 中找到"
+        },
+        "description": "\n  | ENG | 简体中文 | 日本語 | 한국어 |\n  | --- | -------- | ------ | ------ |\n  | en  | zh       | ja     | kr     |\n    ",
+        "categories": [
+          "new-media"
+        ],
+        "features": {
+          "requireConfig": false,
+          "requirePuppeteer": false,
+          "antiCrawler": false,
+          "supportRadar": true,
+          "supportBT": false,
+          "supportPodcast": false,
+          "supportScihub": false
+        },
+        "radar": [
+          {
+            "title": "专业文章",
+            "source": [
+              "zhonglun.com/research/articles"
+            ],
+            "target": "/research/article/zh"
+          },
+          {
+            "title": " Articles",
+            "source": [
+              "en.zhonglun.com/research/articles"
+            ],
+            "target": "/research/article/en"
+          },
+          {
+            "title": "論評",
+            "source": [
+              "ja.zhonglun.com/research/articles"
+            ],
+            "target": "/research/article/ja"
+          },
+          {
+            "title": "전문기사",
+            "source": [
+              "kr.zhonglun.com/research/articles"
+            ],
+            "target": "/research/article/kr"
+          }
+        ],
+        "location": "index.ts"
+      }
+    },
+    "name": "中伦律师事务所",
+    "url": "zhonglun.com",
+    "categories": [
+      "new-media"
+    ],
+    "description": ""
   },
   "zhubai": {
     "routes": {
