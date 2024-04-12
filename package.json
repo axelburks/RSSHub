@@ -52,10 +52,10 @@
     "dependencies": {
         "@hono/node-server": "1.9.1",
         "@hono/swagger-ui": "0.2.1",
-        "@hono/zod-openapi": "0.10.0",
+        "@hono/zod-openapi": "0.11.0",
         "@notionhq/client": "2.2.15",
         "@postlight/parser": "2.2.3",
-        "@sentry/node": "7.109.0",
+        "@sentry/node": "7.110.0",
         "@tonyrl/rand-user-agent": "2.0.58",
         "aes-js": "3.1.2",
         "art-template": "4.13.2",
@@ -88,7 +88,7 @@
         "jsrsasign": "10.9.0",
         "lru-cache": "10.2.0",
         "lz-string": "1.5.0",
-        "mailparser": "3.6.9",
+        "mailparser": "3.7.0",
         "markdown-it": "14.1.0",
         "module-alias": "2.2.3",
         "notion-to-md": "3.1.1",
@@ -152,7 +152,7 @@
         "@typescript-eslint/eslint-plugin": "7.6.0",
         "@typescript-eslint/parser": "7.6.0",
         "@vercel/nft": "0.26.4",
-        "@vitest/coverage-v8": "1.4.0",
+        "@vitest/coverage-v8": "1.5.0",
         "eslint": "8.57.0",
         "eslint-config-prettier": "9.1.0",
         "eslint-nibble": "8.1.0",
@@ -174,7 +174,7 @@
         "typescript": "5.4.5",
         "unified": "11.0.4",
         "vite-tsconfig-paths": "4.3.2",
-        "vitest": "1.4.0"
+        "vitest": "1.5.0"
     },
     "engines": {
         "node": ">=20"
