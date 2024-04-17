@@ -73,6 +73,9 @@
   "/0818tuan/:listId?": [
     "TonyRL"
   ],
+  "/0x80/blog": [
+    "xnum"
+  ],
   "/141jav/{.*}?": [
     "cgkings",
     "nczitzk"
@@ -246,6 +249,9 @@
   "/abskoop/nsfw": [
     "zhenhappy"
   ],
+  "/accessbriefing/:category{.+}?": [
+    "nczitzk"
+  ],
   "/acfun/article/:categoryId/:sortType?/:timeRange?": [
     "TonyRL"
   ],
@@ -411,6 +417,9 @@
     "metowolf",
     "HenryQW",
     "kt286"
+  ],
+  "/apple/podcast/:id": [
+    "Acring"
   ],
   "/appleinsider/:category?": [
     "nczitzk"
@@ -1955,6 +1964,9 @@
   "/freewechat/profile/:id": [
     "TonyRL"
   ],
+  "/freexcomic/book/:id": [
+    "junfengP"
+  ],
   "/ft/:language/:channel?": [
     "HenryQW",
     "xyqfer"
@@ -2257,6 +2269,9 @@
   ],
   "/gov/jgjcndrc/:id?": [
     "nczitzk"
+  ],
+  "/gov/jiangsu/wlt/:page?": [
+    "GideonSenku"
   ],
   "/gov/jinan/healthcommission/medical_exam_notice": [
     "tzjyxb"
