@@ -4508,6 +4508,17 @@
         ],
         "target": "/ecnu/acm/contest/"
       }
+    ],
+    "www.jwc": [
+      {
+        "title": "教务处通知",
+        "docs": "https://docs.rsshub.app/routes/university",
+        "source": [
+          "/",
+          "/"
+        ],
+        "target": "/ecnu/tzgg"
+      }
     ]
   },
   "kaoyan.com": {
@@ -13736,9 +13747,30 @@
       }
     ]
   },
+  "steamcommunity.com": {
+    "_name": "Steam",
+    ".": [
+      {
+        "title": "Community Hub",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid"
+        ],
+        "target": "/steam/appcommunityfeed/:appid"
+      }
+    ]
+  },
   "steampowered.com": {
     "_name": "Steam",
     "store": [
+      {
+        "title": "Community Hub",
+        "docs": "https://docs.rsshub.app/routes/game",
+        "source": [
+          "/app/:appid/*/"
+        ],
+        "target": "/steam/appcommunityfeed/:appid"
+      },
       {
         "title": "Store Search",
         "docs": "https://docs.rsshub.app/routes/game",
